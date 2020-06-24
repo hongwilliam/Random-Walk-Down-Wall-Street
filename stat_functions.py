@@ -41,4 +41,9 @@ def compute_z_score(x, mu, sigma):
     #print ((x-mu)/sigma)
     return (x-mu)/sigma
 
-#add expected value and covariance later
+list_1 = [1.23, 2.12, 3.34, 4.5]
+
+list_2 = [2.56, 2.89, 3.76, 3.95]
+covariance = numpy.stack((list_1, list_2), axis = 0)
+
+print(numpy.cov(covariance))
