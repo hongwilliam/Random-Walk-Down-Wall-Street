@@ -5,12 +5,14 @@
 <ul>
 <li> ex: are movements in US stocks correlated to movements in interest rates? </li>
 </ul>
+</ul>
+<ul>  
 <li>To test if there are correlations between different categories of US stocks (size, sector) </li>
 <ul>
 <li> ex: are movements in tech stocks correlated to movements in energy stocks? </li>
 </ul>
-<li>To test if modern portfolio theory is a sufficient analytical tool for investing </li>
-<ul>
-<li> ex: is beta a capable predictor of returns? </li>
-</ul>
-<p><p> Collaborators: William Hong, Daniel Han, Aaron Chen, Farhan Azad </br>
+<br>Collaborators: William Hong, Daniel Han, Aaron Chen, Farhan Azad </br>
+<br> DEVELOPER INSTRUCTIONS </br>
+<br>(1) in the command line type pip install pandas-datareader</br>
+<br>(2) while in this git directory type python stat_functions.py to excecute the file</br>
+<br>(3) enter in tickers into the command line one at a time when prompted (ex: AMZN, MSFT) to compute correlation coefficient</br>
