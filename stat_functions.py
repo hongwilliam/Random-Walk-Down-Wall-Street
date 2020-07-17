@@ -90,10 +90,15 @@ while (x < len(COST)):
 #print(COST_list)
 
 #IMPORTANT FUNCTION
-#limitation: only computes for the last 10 years
-def compute_correlation_companies(company_1, company_2):
-    temp_1 = pdr.get_data_yahoo(symbols = company_1, start =  datetime(2010, 7, 14), end = datetime(2020, 7, 14))
-    temp_2 = pdr.get_data_yahoo(symbols = company_2, start =  datetime(2010, 7, 14), end = datetime(2020, 7, 14))
+def compute_correlation_companies(company_1, company_2, start_year, start_month, start_day, end_year, end_month, end_day):
+    a = int(start_year)
+    b = int(start_month)
+    c = int(start_day)
+    d = int(end_year)
+    e = int(end_month)
+    f = int(end_day)
+    temp_1 = pdr.get_data_yahoo(symbols = company_1, start =  datetime(a, b, c), end = datetime(d, e, f))
+    temp_2 = pdr.get_data_yahoo(symbols = company_2, start =  datetime(a, b, c), end = datetime(d, e, f))
     comp1_list = []
     comp2_list = []
     x = 0
@@ -114,14 +119,19 @@ def compute_correlation_companies(company_1, company_2):
     comp2_list = pd.Series(comp2_list)
     return comp1_list.corr(comp2_list)
 
-#print(compute_correlation_companies('TSLA', 'AAPL')) #correlation of about 0.86 between Tesla and Apple
 
 
 #PART 4: entering command line input to get specific companies' correlation
 #THIS IS THE COOL SHIT
 enter_company_1 = input("Enter a ticker here: ")
 enter_company_2 = input("Enter another ticker here: ")
+enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 7, 16): ")
+enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 7, 16): ")
+start_list = enter_start.split(", ")
+end_list = enter_end.split(", ")
+
 print("Here is the correlaton coefficient between the 2 companies: ")
-print(compute_correlation_companies(enter_company_1, enter_company_2))
+print(compute_correlation_companies(enter_company_1, enter_company_2,
+start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
 
 #some interesting case studies: Tesla (TSLA) and Ford (F) have negative correlation
