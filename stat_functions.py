@@ -89,7 +89,6 @@ while (x < len(COST)):
     x += 1
 #print(COST_list)
 
-#IMPORTANT FUNCTION
 def compute_correlation_companies(company_1, company_2, start_year, start_month, start_day, end_year, end_month, end_day):
     a = int(start_year)
     b = int(start_month)
@@ -97,6 +96,36 @@ def compute_correlation_companies(company_1, company_2, start_year, start_month,
     d = int(end_year)
     e = int(end_month)
     f = int(end_day)
+    # Test Conditions to handle same start and end date
+    if ((a = d) and (b = e) and (c = f)):
+        print("The start and end dates are the same. No possible analysis can be done.")
+    # Test Conditions to handle exceptions where the months exist out of range
+    if ((b < 1 or b > 12) or (e < 1 or e > 12)):
+        print("There's an issue with the month for start_month or end_month. Please ensure it's between 1 and 12!")
+        break;
+    
+    # Test conditions to handle exceptions where days are out of range for non-leap years and regular months
+    if ((c < 1) or (f < 1) or ((b = 2 or e = 2) and (c > 28 or f > 28) and (a % 4 != 0 or d % 4 != 0 ))):
+        print("There's an issue with the day for either the start date of analysis or end date of analysis!")
+        break;
+
+    # Test Conditions to handle leap year days in the month of February
+    if ((b = 2 or e = 2) and (c > 29 or f > 29) and (a % 4 == 0 or d % 4 == 0)):
+        print("This is an leap year, the start day and end day are potentially wrong!")
+        break;
+
+    # Test Conditions to handle months with 31 days for start date
+    if ((b = 1 or b = 3 or b = 5 or b = 7 or b = 8 or b = 10 or b = 12) and (c > 31)):
+        print("There is an issue with the day for the start-date.")
+    
+    # Test Conditions to handle months with 30 days for start date
+    if ((b = 4 or b = 6 or b = 9 or b = 11) and (c > 30)):
+        print("There is an issue with the day for the start-date.")
+
+    # Test Conditions to handle the years and current day.
+    if (a < 1970 or d > 2020 or (d = 2020 and e = 7 and f = 28)):
+        print("Stock data prices don't exist before or beyond this point.")
+        
     temp_1 = pdr.get_data_yahoo(symbols = company_1, start =  datetime(a, b, c), end = datetime(d, e, f))
     temp_2 = pdr.get_data_yahoo(symbols = company_2, start =  datetime(a, b, c), end = datetime(d, e, f))
     comp1_list = []
