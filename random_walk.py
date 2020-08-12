@@ -166,37 +166,17 @@ def compute_volatility(company, start_year, start_month, start_day, end_year, en
         comp_list.append(entry)
         x += 1
 
+    average = "The average for this data point is: "
+    average += str(round(np.mean(comp_list), 2))
+    print(average)
+
+    standard_deviation = "The standard deviation for this data point is: "
+    standard_deviation += str(round(np.std(comp_list), 2)) + "\n"
+    print (standard_deviation)
+
     return round(np.std(comp_list), 2)
 
-#placeholder
-def compute_momentum(company, start_year, start_month, start_day, end_year, end_month, end_day):
-    a = int(start_year)
-    b = int(start_month)
-    c = int(start_day)
-    d = int(end_year)
-    e = int(end_month)
-    f = int(end_day)
 
-    temp = pdr.get_data_yahoo(symbols = company, start =  datetime(a, b, c), end = datetime(d, e, f))
-    comp_list = []
-    x = 0
-    while (x < len(temp)):
-        entry = temp['Close'][x]
-        entry = round(entry, 2)
-        comp_list.append(entry)
-        x += 1
-
-    increasing_day_to_day = 0
-    total_samples = len(comp_list) 
-    for cursor in range(1, total_samples - 1):
-      if comp_list[cursor] > comp_list[cursor - 1]:
-        increasing_day_to_day += 1
-    
-    momentum = increasing_day_to_day/total_samples
-    momentum = round(momentum * 100, 2)
-    momentum = str(momentum)
-    momentum += '%'
-    return momentum 
 
 #PART 4: entering command line input to get analysis
 #THIS IS THE COOL SHIT
@@ -206,26 +186,39 @@ while True:
     selection = input("Enter option here: ")
     if selection == '1':
         print("________________________________________________________________________________")
-        enter_company_1 = input("Enter a ticker here: ")
-        enter_company_2 = input("Enter another ticker here: ")
-        enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 7, 16): ")
-        enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 7, 16): ")
-        start_list = enter_start.split(", ")
-        end_list = enter_end.split(", ")
+        print("\nInstructions: \nEnter in 1 to compute correlation coefficient between 2 data points \nEnter in 2 to compute volatility \n")
+        next_selection = input("Enter option here: ")
+        if next_selection == '1':
+            enter_company_1 = input("Enter a ticker here: ")
+            enter_company_2 = input("Enter another ticker here: ")
+            enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
+            enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
+            start_list = enter_start.split(", ")
+            end_list = enter_end.split(", ")
 
-        print("Here is the correlaton coefficient between the 2 data points: ")
-        print(compute_correlation_companies(enter_company_1, enter_company_2,
-        start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
+            print("Here is the correlaton coefficient between %s and %s: " %(enter_company_1, enter_company_2))
+            print(compute_correlation_companies(enter_company_1, enter_company_2,
+            start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
 
-        print("Here is the momentum for %s: " %enter_company_1)
-        print(compute_momentum(enter_company_1, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2]))
+        if next_selection == '2':
+            enter_company = input("Enter a ticker here: ")
+            enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
+            enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
+            start_list = enter_start.split(", ")
+            end_list = enter_end.split(", ")
+            print("Here is the volatility analysis for %s: " %enter_company)
+            compute_volatility(enter_company, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2])
+            print("________________________________________________________________________________")
+            print("\n")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
 
-        print("Here is the volatility for %s: " %enter_company_1)
-        print(compute_volatility(enter_company_1, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2]))
 
-        print("________________________________________________________________________________")
-        print("\n")
-        print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+        if next_selection != '1' and next_selection != '2':
+            print("Incorrect input entered\n")
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
 
     if selection == '2':
         print("________________________________________________________________________________")
@@ -238,7 +231,7 @@ while True:
             c = "Dow Jones Industrial Average: ^DJI\n"
             d = "NASDAQ Composite: ^IXIC\n"
             e = "Russell 2000: ^RUT \n"
-            f = "FTSE 100: ^FTSE\n"
+            f = "FTSE 100: unknown\n"
             g = "Nikkei 225: ^N225\n"
             h = "VIX Volatility Index: ^VIX\n"
             print(a+b+c+d+e+f+g+h)
@@ -286,4 +279,3 @@ while True:
         print("Incorrect input entered\n")
         print("________________________________________________________________________________")
         print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
-
