@@ -2,16 +2,22 @@ import cgitb
 cgitb.enable()
 import numpy as np
 import pandas as pd
-import csv
 import scipy.stats
 import pandas_datareader as pdr
 from datetime import datetime
+import sys
 
 #DEVELOPER INSTRUCTIONS
-#go on terminal in the directory this file is in
-#type python stat_functions.py to excecute the file
-#also in the terminl type pip install pandas-datareader
-#enter in tickers into the command line prompt (ex: AMZN, MSFT)
+
+#(1) MAKE SURE TO INSTALL THIS PACKAGE IN THE TERMINAL USING THE COMMANDS:
+#pip install pandas-datareader
+
+#(2) go on terminal in the directory this file is in
+
+#(3) type in the command line
+#python random_walk.py
+
+#(4) enter in instrctions when prompted in the terminal
 
 
 #PART 1: testing basic stat functions
@@ -56,27 +62,7 @@ list_7 = pd.Series(list_7)
 #print(list_6.corr(list_7)) #should return 1
 
 
-#PART 3: TESTING WORKING WITH CSV FILES
-
-#storing a csv file onto a list
-amzn_list = []
-amzn_csv_file = pd.read_csv("AMZN.csv", usecols = ["Close"])
-for i in range(len(amzn_csv_file)):
-    price = round(amzn_csv_file.values[i][0], 2)
-    amzn_list.append(price)
-
-sp500_list = []
-sp500_csv_file = pd.read_csv("SPY.csv", usecols = ["Close"])
-for i in range(len(sp500_csv_file)):
-    price = round(sp500_csv_file.values[i][0], 2)
-    sp500_list.append(price)
-
-#analyzing correlation coefficient
-amzn_list = pd.Series(amzn_list)
-sp500_list = pd.Series(sp500_list)
-#print(amzn_list.corr(sp500_list)) #correlation coefficient of about 0.91 between Amazon and S&P 500
-
-#retrieving csv files from online and storing into list
+#PART 3: retrieving csv files from online and storing into list
 COST = pdr.get_data_yahoo(symbols = 'COST', start =  datetime(2010, 7, 14), end = datetime(2020, 7, 14))
 #print(round(COST['Close'][0], 2)) #Costco's close at 7/14/2010 was $56.35
 
@@ -96,36 +82,48 @@ def compute_correlation_companies(company_1, company_2, start_year, start_month,
     d = int(end_year)
     e = int(end_month)
     f = int(end_day)
+
     # Test Conditions to handle same start and end date
-    if ((a = d) and (b = e) and (c = f)):
+    if ((a == d) and (b == e) and (c == f)):
         print("The start and end dates are the same. No possible analysis can be done.")
+        sys.exit()
+
     # Test Conditions to handle exceptions where the months exist out of range
     if ((b < 1 or b > 12) or (e < 1 or e > 12)):
         print("There's an issue with the month for start_month or end_month. Please ensure it's between 1 and 12!")
-        break;
-    
+        sys.exit()
+
     # Test conditions to handle exceptions where days are out of range for non-leap years and regular months
-    if ((c < 1) or (f < 1) or ((b = 2 or e = 2) and (c > 28 or f > 28) and (a % 4 != 0 or d % 4 != 0 ))):
+    if ((c < 1) or (f < 1) or ((b == 2 or e == 2) and (c > 28 or f > 28) and (a % 4 != 0 or d % 4 != 0 ))):
         print("There's an issue with the day for either the start date of analysis or end date of analysis!")
-        break;
+        sys.exit()
 
     # Test Conditions to handle leap year days in the month of February
-    if ((b = 2 or e = 2) and (c > 29 or f > 29) and (a % 4 == 0 or d % 4 == 0)):
+    if ((b == 2 or e == 2) and (c > 29 or f > 29) and (a % 4 == 0 or d % 4 == 0)):
         print("This is an leap year, the start day and end day are potentially wrong!")
-        break;
+        sys.exit()
 
     # Test Conditions to handle months with 31 days for start date
-    if ((b = 1 or b = 3 or b = 5 or b = 7 or b = 8 or b = 10 or b = 12) and (c > 31)):
+    if ((b == 1 or b == 3 or b == 5 or b == 7 or b == 8 or b == 10 or b == 12) and (c > 31)):
         print("There is an issue with the day for the start-date.")
-    
-    # Test Conditions to handle months with 30 days for start date
-    if ((b = 4 or b = 6 or b = 9 or b = 11) and (c > 30)):
-        print("There is an issue with the day for the start-date.")
+        sys.exit()
 
-    # Test Conditions to handle the years and current day.
-    if (a < 1970 or d > 2020 or (d = 2020 and e = 7 and f = 28)):
-        print("Stock data prices don't exist before or beyond this point.")
-        
+    # Test Conditions to handle months with 30 days for start date
+    if ((b == 4 or b == 6 or b == 9 or b == 11) and (c > 30)):
+        print("There is an issue with the day for the start-date.")
+        sys.exit()
+
+    # Test Conditions to handle months with 31 days for end date
+    if ((e == 1 or e == 3 or e == 5 or e == 7 or e == 8 or e == 10 or e == 12) and (f > 31)):
+        print("There is an issue with the day for the end-date.")
+        sys.exit()
+
+    # Test Conditions to handle months with 30 days for end date
+    if ((e == 4 or e == 6 or e == 9 or e == 11) and (f > 30)):
+        print("There is an issue with the day for the end-date.")
+        sys.exit()
+
+
     temp_1 = pdr.get_data_yahoo(symbols = company_1, start =  datetime(a, b, c), end = datetime(d, e, f))
     temp_2 = pdr.get_data_yahoo(symbols = company_2, start =  datetime(a, b, c), end = datetime(d, e, f))
     comp1_list = []
@@ -150,17 +148,44 @@ def compute_correlation_companies(company_1, company_2, start_year, start_month,
 
 
 
-#PART 4: entering command line input to get specific companies' correlation
+#PART 4: entering command line input to get analysis
 #THIS IS THE COOL SHIT
-enter_company_1 = input("Enter a ticker here: ")
-enter_company_2 = input("Enter another ticker here: ")
-enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 7, 16): ")
-enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 7, 16): ")
-start_list = enter_start.split(", ")
-end_list = enter_end.split(", ")
+print("Instructions: \nEnter in 1 to prompt analysis! \nEnter in 2 to get a list of market sectors! \nEnter in 3 to exit the program")
+while True:
+    selection = input("Type option here: ")
+    if selection == '1':
+        enter_company_1 = input("Enter a ticker here: ")
+        enter_company_2 = input("Enter another ticker here: ")
+        enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 7, 16): ")
+        enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 7, 16): ")
+        start_list = enter_start.split(", ")
+        end_list = enter_end.split(", ")
 
-print("Here is the correlaton coefficient between the 2 companies: ")
-print(compute_correlation_companies(enter_company_1, enter_company_2,
-start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
+        print("Here is the correlaton coefficient between the 2 companies: ")
+        print(compute_correlation_companies(enter_company_1, enter_company_2,
+        start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
+        print("\n")
+        print("Instructions: \nType in 1 to prompt analysis! \nType in 2 to get a list of market sectors! \nType in 3 to exit the program")
 
-#some interesting case studies: Tesla (TSLA) and Ford (F) have negative correlation
+    if selection == '2':
+        a = "Below are some tickers you can enter that represent market sectors\n"
+        b = "Communication Services: XLC\n"
+        c = "Consumer Discretionary: XLY\n"
+        d = "Consumer staples: XLP\n"
+        e = "Energy: XLE\n"
+        f = "Financials: XLF\n"
+        g = "Health: XLV\n"
+        h = "Industrials: XLI\n"
+        i = "Materials: XLB\n"
+        j = "Real estate: XLRE\n"
+        k = "Technology: XLK\n"
+        l = "Utilities: XLU\n"
+        print(a+b+c+d+e+f+g+h+i+j+k+l)
+        print("Instructions: \nType in 1 to prompt analysis! \nType in 2 to get a list of market sectors! \nType in 3 to exit the program")
+
+    if selection == '3':
+        sys.exit()
+
+    if selection != '1' and selection != '2' and selection != '3':
+        print("Incorrect input entered\n")
+        print("Instructions: \nType in 1 to prompt analysis! \nType in 2 to get a list of market sectors! \nType in 3 to exit the program")
