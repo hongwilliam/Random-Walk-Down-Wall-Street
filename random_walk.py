@@ -150,10 +150,12 @@ def compute_correlation_companies(company_1, company_2, start_year, start_month,
 
 #PART 4: entering command line input to get analysis
 #THIS IS THE COOL SHIT
-print("Instructions: \nEnter in 1 to prompt analysis! \nEnter in 2 to get a list of market sectors! \nEnter in 3 to exit the program")
+#put in underlining and terminal formatting later
+print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
 while True:
-    selection = input("Type option here: ")
+    selection = input("Enter option here: ")
     if selection == '1':
+        print("________________________________________________________________________________")
         enter_company_1 = input("Enter a ticker here: ")
         enter_company_2 = input("Enter another ticker here: ")
         enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 7, 16): ")
@@ -164,28 +166,62 @@ while True:
         print("Here is the correlaton coefficient between the 2 companies: ")
         print(compute_correlation_companies(enter_company_1, enter_company_2,
         start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
+        print("________________________________________________________________________________")
         print("\n")
-        print("Instructions: \nType in 1 to prompt analysis! \nType in 2 to get a list of market sectors! \nType in 3 to exit the program")
+        print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
 
     if selection == '2':
-        a = "\nBelow are some tickers you can enter that represent market sectors\n"
-        b = "Communication Services: XLC\n"
-        c = "Consumer Discretionary: XLY\n"
-        d = "Consumer Staples: XLP\n"
-        e = "Energy: XLE\n"
-        f = "Financials: XLF\n"
-        g = "Health: XLV\n"
-        h = "Industrials: XLI\n"
-        i = "Materials: XLB\n"
-        j = "Real Estate: XLRE\n"
-        k = "Technology: XLK\n"
-        l = "Utilities: XLU\n"
-        print(a+b+c+d+e+f+g+h+i+j+k+l)
-        print("Instructions: \nType in 1 to prompt analysis! \nType in 2 to get a list of market sectors! \nType in 3 to exit the program")
+        print("________________________________________________________________________________")
+        print("\nInstructions: \nEnter in 1 to get a list of market sectors \nEnter in 2 to get a list of relevant market indexes \nEnter in 3 to get a list of ETFs that track different market caps")
+        next_selection = input("Enter option here: ")
+        if next_selection == '1':
+            print("________________________________________________________________________________")
+            a = "\nBelow are some tickers you can enter that represent market sectors\n"
+            b = "Communication Services: XLC\n"
+            c = "Consumer Discretionary: XLY\n"
+            d = "Consumer Staples: XLP\n"
+            e = "Energy: XLE\n"
+            f = "Financials: XLF\n"
+            g = "Health: XLV\n"
+            h = "Industrials: XLI\n"
+            i = "Materials: XLB\n"
+            j = "Real Estate: XLRE\n"
+            k = "Technology: XLK\n"
+            l = "Utilities: XLU\n"
+            print(a+b+c+d+e+f+g+h+i+j+k+l)
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+        if next_selection == '2':
+            print("________________________________________________________________________________")
+            a = "\nBelow are some tickers you can enter that track market indexes\n"
+            b = "S&P 500: VOO\n"
+            c = "Dow Jones Industrial Average: DIA\n"
+            d = "NASDAQ 100: QQQ\n"
+            e = "Russell 2000: VTWO \n"
+            f = "Total US Stock Market: VTSMX\n"
+            g = "Total World Stock Market: VT\n"
+            h = "Short S&P 500: SH\n"
+            print(a+b+c+d+e+f+g+h)
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+        if next_selection == '3':
+            print("________________________________________________________________________________")
+            a = "\nBelow are some tickers you can enter that track different market caps\n"
+            b = "US Large Cap: VV\n"
+            c = "US Mid Cap: VO\n"
+            d = "US Small Cap: VB\n"
+            print(a+b+c+d)
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+        if next_selection != '1' and next_selection != '2' and next_selection != '3':
+            print("Incorrect input entered\n")
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
 
     if selection == '3':
         sys.exit()
 
     if selection != '1' and selection != '2' and selection != '3':
         print("Incorrect input entered\n")
-        print("Instructions: \nType in 1 to prompt analysis! \nType in 2 to get a list of market sectors! \nType in 3 to exit the program")
+        print("________________________________________________________________________________")
+        print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
