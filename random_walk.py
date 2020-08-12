@@ -195,7 +195,7 @@ def compute_momentum(company, start_year, start_month, start_day, end_year, end_
 #PART 4: entering command line input to get analysis
 #THIS IS THE COOL SHIT
 #put in underlining and terminal formatting later
-print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to exit the program")
 while True:
     selection = input("Enter option here: ")
     if selection == '1':
@@ -207,14 +207,10 @@ while True:
         start_list = enter_start.split(", ")
         end_list = enter_end.split(", ")
 
-        print("Here is the correlaton coefficient between the 2 companies: ")
+        print("Here is the correlaton coefficient between the 2 data points: ")
         print(compute_correlation_companies(enter_company_1, enter_company_2,
         start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
 
-        print("Here is the P/E (Price to Earning) Ratios of the two companies: ")
-        enter_previous_date = datetime.today() - timedelta(days = 1)
-        print("%s %d" %enter_company_1 %compute_pe_ratio(enter_company_1, enter_previous_date))
-        print("%s %d" %enter_company_2 %compute_pe_ratio(enter_company_2, enter_previous_date))
 
         print("________________________________________________________________________________")
         print("\n")
@@ -222,9 +218,22 @@ while True:
 
     if selection == '2':
         print("________________________________________________________________________________")
-        print("\nInstructions: \nEnter in 1 to get a list of market sectors \nEnter in 2 to get a list of relevant market indexes \nEnter in 3 to get a list of ETFs that track different market caps")
+        print("\nInstructions: \nEnter in 1 to get a list of relevant market indexes \nEnter in 2 to get a list of US market sectors \nEnter in 3 to get a list of commodities and currencies")
         next_selection = input("Enter option here: ")
         if next_selection == '1':
+            print("________________________________________________________________________________")
+            a = "\nBelow are some tickers you can enter that track market indexes\n"
+            b = "S&P 500: ^GSPC\n"
+            c = "Dow Jones Industrial Average: ^DJI\n"
+            d = "NASDAQ Composite: ^IXIC\n"
+            e = "Russell 2000: ^RUT \n"
+            f = "FTSE 100: ^FTSE\n"
+            g = "Nikkei 225: ^N225\n"
+            h = "VIX Volatility Index: ^VIX\n"
+            print(a+b+c+d+e+f+g+h)
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+        if next_selection == '2':
             print("________________________________________________________________________________")
             a = "\nBelow are some tickers you can enter that represent market sectors\n"
             b = "Communication Services: XLC\n"
@@ -241,26 +250,17 @@ while True:
             print(a+b+c+d+e+f+g+h+i+j+k+l)
             print("________________________________________________________________________________")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
-        if next_selection == '2':
-            print("________________________________________________________________________________")
-            a = "\nBelow are some tickers you can enter that track market indexes\n"
-            b = "S&P 500: VOO\n"
-            c = "Dow Jones Industrial Average: DIA\n"
-            d = "NASDAQ 100: QQQ\n"
-            e = "Russell 2000: VTWO \n"
-            f = "Total US Stock Market: VTSMX\n"
-            g = "Total World Stock Market: VT\n"
-            h = "Short S&P 500: SH\n"
-            print(a+b+c+d+e+f+g+h)
-            print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
         if next_selection == '3':
             print("________________________________________________________________________________")
-            a = "\nBelow are some tickers you can enter that track different market caps\n"
-            b = "US Large Cap: VV\n"
-            c = "US Mid Cap: VO\n"
-            d = "US Small Cap: VB\n"
-            print(a+b+c+d)
+            a = "\nBelow are some tickers you can enter that track commodities and currencies\n"
+            b = "US Treasury 10 Year Bond: ^TNX\n"
+            c = "Crude Oil: CL=F\n"
+            d = "Gold: GC=F\n"
+            e = "Silver: SI=F\n"
+            f = "Bitcoin: BTC-USD\n"
+            g = "US Dollar/Euro Exchange Rate: USDEUR=X\n"
+            h = "US Dollar/Yen Exchage Rate: JPY=X\n"
+            print(a+b+c+d+e+f+g+h)
             print("________________________________________________________________________________")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
         if next_selection != '1' and next_selection != '2' and next_selection != '3':
