@@ -4,7 +4,8 @@ import numpy as np
 import pandas as pd
 import scipy.stats
 import pandas_datareader as pdr
-from datetime import datetime
+import yfinance as yf
+from datetime import datetime, timedelta
 import sys
 
 #DEVELOPER INSTRUCTIONS
@@ -75,6 +76,7 @@ while (x < len(COST)):
     x += 1
 #print(COST_list)
 
+# Correlation Analysis
 def compute_correlation_companies(company_1, company_2, start_year, start_month, start_day, end_year, end_month, end_day):
     a = int(start_year)
     b = int(start_month)
@@ -146,7 +148,20 @@ def compute_correlation_companies(company_1, company_2, start_year, start_month,
     comp2_list = pd.Series(comp2_list)
     return comp1_list.corr(comp2_list)
 
+# P/E Ratio
+def search_value(index_name, date):
+    return float(index_name.loc[index_name, date])
 
+def compute_pe_ratio(company_ticker, previous_date):
+    company_name = yf.Ticket(company_ticker)
+    company_price = company_name.history(period = "max")
+    
+    # Earnings are from the latest financial statement, which remains until the next financial report.
+    # Latest P/E can be from latest financial records and close price from the previous date
+    latest_price = company_price.loc[previous_date, 'Close']
+    latest_eps = search_value('Earnings Per Share Share', '2020-06')
+    latest_PtoE = latest_price/latest_eps
+    print(latest_PtoE)
 
 #PART 4: entering command line input to get analysis
 #THIS IS THE COOL SHIT
@@ -166,6 +181,12 @@ while True:
         print("Here is the correlaton coefficient between the 2 companies: ")
         print(compute_correlation_companies(enter_company_1, enter_company_2,
         start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
+        
+        print("Here is the P/E (Price to Earning) Ratios of the two companies: ")
+        enter_previous_date = datetime.today() - timedelta(days = 1)
+        print("%s %d" %enter_company_1 %compute_pe_ratio(enter_company_1, enter_previous_date))
+        print("%s %d" %enter_company_2 %compute_pe_ratio(enter_company_2, enter_previous_date))
+
         print("________________________________________________________________________________")
         print("\n")
         print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
@@ -225,3 +246,4 @@ while True:
         print("Incorrect input entered\n")
         print("________________________________________________________________________________")
         print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+
