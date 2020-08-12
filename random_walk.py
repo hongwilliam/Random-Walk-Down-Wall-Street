@@ -12,6 +12,7 @@ import sys
 
 #(1) MAKE SURE TO INSTALL THIS PACKAGE IN THE TERMINAL USING THE COMMANDS:
 #pip install pandas-datareader
+#pip install yfinance
 
 #(2) go on terminal in the directory this file is in
 
@@ -148,20 +149,48 @@ def compute_correlation_companies(company_1, company_2, start_year, start_month,
     comp2_list = pd.Series(comp2_list)
     return comp1_list.corr(comp2_list)
 
-# P/E Ratio
-def search_value(index_name, date):
-    return float(index_name.loc[index_name, date])
+#placeholder
+def compute_volatility(company, start_year, start_month, start_day, end_year, end_month, end_day):
+    a = int(start_year)
+    b = int(start_month)
+    c = int(start_day)
+    d = int(end_year)
+    e = int(end_month)
+    f = int(end_day)
 
-def compute_pe_ratio(company_ticker, previous_date):
-    company_name = yf.Ticket(company_ticker)
-    company_price = company_name.history(period = "max")
-    
-    # Earnings are from the latest financial statement, which remains until the next financial report.
-    # Latest P/E can be from latest financial records and close price from the previous date
-    latest_price = company_price.loc[previous_date, 'Close']
-    latest_eps = search_value('Earnings Per Share Share', '2020-06')
-    latest_PtoE = latest_price/latest_eps
-    print(latest_PtoE)
+    temp = pdr.get_data_yahoo(symbols = company, start =  datetime(a, b, c), end = datetime(d, e, f))
+    comp_list = []
+    x = 0
+    while (x < len(temp_1)):
+        entry = temp['Close'][x]
+        entry = round(entry, 2)
+        comp_list.append(entry)
+        x += 1
+
+    return
+
+#placeholder
+def compute_momentum(company, start_year, start_month, start_day, end_year, end_month, end_day):
+    a = int(start_year)
+    b = int(start_month)
+    c = int(start_day)
+    d = int(end_year)
+    e = int(end_month)
+    f = int(end_day)
+
+    temp = pdr.get_data_yahoo(symbols = company, start =  datetime(a, b, c), end = datetime(d, e, f))
+    comp_list = []
+    x = 0
+    while (x < len(temp_1)):
+        entry = temp['Close'][x]
+        entry = round(entry, 2)
+        comp_list.append(entry)
+        x += 1
+
+    return
+
+
+
 
 #PART 4: entering command line input to get analysis
 #THIS IS THE COOL SHIT
@@ -181,7 +210,7 @@ while True:
         print("Here is the correlaton coefficient between the 2 companies: ")
         print(compute_correlation_companies(enter_company_1, enter_company_2,
         start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
-        
+
         print("Here is the P/E (Price to Earning) Ratios of the two companies: ")
         enter_previous_date = datetime.today() - timedelta(days = 1)
         print("%s %d" %enter_company_1 %compute_pe_ratio(enter_company_1, enter_previous_date))
@@ -246,4 +275,3 @@ while True:
         print("Incorrect input entered\n")
         print("________________________________________________________________________________")
         print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
-
