@@ -168,16 +168,16 @@ while True:
         print("Instructions: \nType in 1 to prompt analysis! \nType in 2 to get a list of market sectors! \nType in 3 to exit the program")
 
     if selection == '2':
-        a = "Below are some tickers you can enter that represent market sectors\n"
+        a = "\nBelow are some tickers you can enter that represent market sectors\n"
         b = "Communication Services: XLC\n"
         c = "Consumer Discretionary: XLY\n"
-        d = "Consumer staples: XLP\n"
+        d = "Consumer Staples: XLP\n"
         e = "Energy: XLE\n"
         f = "Financials: XLF\n"
         g = "Health: XLV\n"
         h = "Industrials: XLI\n"
         i = "Materials: XLB\n"
-        j = "Real estate: XLRE\n"
+        j = "Real Estate: XLRE\n"
         k = "Technology: XLK\n"
         l = "Utilities: XLU\n"
         print(a+b+c+d+e+f+g+h+i+j+k+l)
