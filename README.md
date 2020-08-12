@@ -14,5 +14,5 @@
 <br>Collaborators: William Hong, Daniel Han, Aaron Chen, Farhan Azad </br>
 <br> DEVELOPER INSTRUCTIONS </br>
 <br>(1) in the command line type pip install pandas-datareader</br>
-<br>(2) while in this git directory type python stat_functions.py to excecute the file</br>
+<br>(2) while in this git directory type python random_walk.py to excecute the file</br>
 <br>(3) enter in instructions into the command line when prompted to compute correlation coefficient</br>
