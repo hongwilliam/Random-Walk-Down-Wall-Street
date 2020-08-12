@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 import scipy.stats
 import pandas_datareader as pdr
-import yfinance as yf
 from datetime import datetime, timedelta
 import sys
 
@@ -147,7 +146,7 @@ def compute_correlation_companies(company_1, company_2, start_year, start_month,
 
     comp1_list = pd.Series(comp1_list)
     comp2_list = pd.Series(comp2_list)
-    return comp1_list.corr(comp2_list)
+    return round(comp1_list.corr(comp2_list), 2)
 
 #placeholder
 def compute_volatility(company, start_year, start_month, start_day, end_year, end_month, end_day):
@@ -161,13 +160,13 @@ def compute_volatility(company, start_year, start_month, start_day, end_year, en
     temp = pdr.get_data_yahoo(symbols = company, start =  datetime(a, b, c), end = datetime(d, e, f))
     comp_list = []
     x = 0
-    while (x < len(temp_1)):
+    while (x < len(temp)):
         entry = temp['Close'][x]
         entry = round(entry, 2)
         comp_list.append(entry)
         x += 1
 
-    return
+    return round(np.std(comp_list), 2)
 
 #placeholder
 def compute_momentum(company, start_year, start_month, start_day, end_year, end_month, end_day):
@@ -181,16 +180,23 @@ def compute_momentum(company, start_year, start_month, start_day, end_year, end_
     temp = pdr.get_data_yahoo(symbols = company, start =  datetime(a, b, c), end = datetime(d, e, f))
     comp_list = []
     x = 0
-    while (x < len(temp_1)):
+    while (x < len(temp)):
         entry = temp['Close'][x]
         entry = round(entry, 2)
         comp_list.append(entry)
         x += 1
 
-    return
-
-
-
+    increasing_day_to_day = 0
+    total_samples = len(comp_list) 
+    for cursor in range(1, total_samples - 1):
+      if comp_list[cursor] > comp_list[cursor - 1]:
+        increasing_day_to_day += 1
+    
+    momentum = increasing_day_to_day/total_samples
+    momentum = round(momentum * 100, 2)
+    momentum = str(momentum)
+    momentum += '%'
+    return momentum 
 
 #PART 4: entering command line input to get analysis
 #THIS IS THE COOL SHIT
@@ -211,6 +217,11 @@ while True:
         print(compute_correlation_companies(enter_company_1, enter_company_2,
         start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
 
+        print("Here is the momentum for %s: " %enter_company_1)
+        print(compute_momentum(enter_company_1, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2]))
+
+        print("Here is the volatility for %s: " %enter_company_1)
+        print(compute_volatility(enter_company_1, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2]))
 
         print("________________________________________________________________________________")
         print("\n")
@@ -275,3 +286,4 @@ while True:
         print("Incorrect input entered\n")
         print("________________________________________________________________________________")
         print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+
