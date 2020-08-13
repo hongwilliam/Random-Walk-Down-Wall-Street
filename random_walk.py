@@ -11,7 +11,6 @@ import sys
 
 #(1) MAKE SURE TO INSTALL THIS PACKAGE IN THE TERMINAL USING THE COMMANDS:
 #pip install pandas-datareader
-#pip install yfinance
 
 #(2) go on terminal in the directory this file is in
 
@@ -148,7 +147,6 @@ def compute_correlation_companies(company_1, company_2, start_year, start_month,
     comp2_list = pd.Series(comp2_list)
     return round(comp1_list.corr(comp2_list), 2)
 
-#placeholder
 def compute_volatility(company, start_year, start_month, start_day, end_year, end_month, end_day):
     a = int(start_year)
     b = int(start_month)
@@ -176,17 +174,72 @@ def compute_volatility(company, start_year, start_month, start_day, end_year, en
 
     return round(np.std(comp_list), 2)
 
+def compute_average_daily_price_change(company, start_year, start_month, start_day, end_year, end_month, end_day):
+    a = int(start_year)
+    b = int(start_month)
+    c = int(start_day)
+    d = int(end_year)
+    e = int(end_month)
+    f = int(end_day)
+
+    temp = pdr.get_data_yahoo(symbols = company, start =  datetime(a, b, c), end = datetime(d, e, f))
+    change_sum = 0
+    x = 0
+    while (x < (len(temp)-1)):
+        entry_1 = temp['Close'][x]
+        entry_1 = round(entry_1, 2)
+        entry_2 = temp['Close'][x+1]
+        entry_2 = round(entry_2, 2)
+        answer = ((entry_2 - entry_1)/(entry_1)) * 100
+        change_sum += answer
+        x += 1
+
+    #answer is given as %
+    return round((change_sum/(len(temp)-1)), 2)
+
+#uses period of last 14 trading days
+#returns value between 0-100
+#value > 80: overbought, value < 20: oversold
+#generally the higher the value, the more overbought it is
+def compute_stochastic_oscillator(company, year, month, day):
+    a = int(year)
+    b = int(month)
+    c = int(day)
+
+    d = a
+    e = b-1
+    f = c
+    if (b == 1):
+        d -= 1
+        e = 12
+
+    temp = pdr.get_data_yahoo(symbols = company, start =  datetime(d, e, f), end = datetime(a, b, c))
+    comp_list = []
+    x = 0
+    while (x < len(temp)):
+        entry = temp['Close'][x]
+        entry = round(entry, 2)
+        comp_list.append(entry)
+        x += 1
+
+    while (len(comp_list) > 14):
+        comp_list.pop(0)
+
+    low = np.min(comp_list)
+    high = np.max(comp_list)
+    closing = comp_list[13]
+    answer = ( (closing - low)/(high - low) ) * 100
+    return round(answer, 2)
 
 
 #PART 4: entering command line input to get analysis
 #THIS IS THE COOL SHIT
-#put in underlining and terminal formatting later
 print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to exit the program")
 while True:
     selection = input("Enter option here: ")
     if selection == '1':
         print("________________________________________________________________________________")
-        print("\nInstructions: \nEnter in 1 to compute correlation coefficient between 2 data points \nEnter in 2 to compute volatility \n")
+        print("\nInstructions: \nEnter in 1 to compute correlation coefficient between two data points \nEnter in 2 to compute volatility \nEnter in 3 to compute stochastic oscillator\nEnter in 4 to compute average daily percent change")
         next_selection = input("Enter option here: ")
         if next_selection == '1':
             enter_company_1 = input("Enter a ticker here: ")
@@ -214,8 +267,30 @@ while True:
             print("\n")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
 
+        if next_selection == '3':
+            enter_company = input("Enter a ticker here: ")
+            enter_date = input("Enter in today's date (ex: 2020, 8, 12): ")
+            date_list = enter_date.split(", ")
+            print("Here is the stochastic oscillator for %s: " %enter_company)
+            print(compute_stochastic_oscillator(enter_company, date_list[0], date_list[1], date_list[2]))
+            print("________________________________________________________________________________")
+            print("\n")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
 
-        if next_selection != '1' and next_selection != '2':
+        if next_selection == '4':
+            enter_company = input("Enter a ticker here: ")
+            enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
+            enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
+            start_list = enter_start.split(", ")
+            end_list = enter_end.split(", ")
+
+            print("Here is the average daily percent change for %s " %enter_company)
+            print(compute_average_daily_price_change(enter_company,start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2]))
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+
+
+        if next_selection != '1' and next_selection != '2' and next_selection != '3' and next_selection != '4':
             print("Incorrect input entered\n")
             print("________________________________________________________________________________")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
@@ -231,7 +306,7 @@ while True:
             c = "Dow Jones Industrial Average: ^DJI\n"
             d = "NASDAQ Composite: ^IXIC\n"
             e = "Russell 2000: ^RUT \n"
-            f = "FTSE 100: unknown\n"
+            f = "FTSE 100: %5EFTSE%3FP%3DFTSE\n"
             g = "Nikkei 225: ^N225\n"
             h = "VIX Volatility Index: ^VIX\n"
             print(a+b+c+d+e+f+g+h)
