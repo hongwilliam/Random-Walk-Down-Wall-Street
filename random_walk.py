@@ -384,7 +384,8 @@ def compute_exponential_moving_average(company, start_year, start_month, start_d
 
         comp_list = pd.Series(comp_list)
         comp_list = comp_list.ewm(span = x, adjust=False).mean()
-        answer = round(comp_list[1305], 2)
+        x -= 1
+        answer = round(comp_list[x], 2)
 
         return answer
 
