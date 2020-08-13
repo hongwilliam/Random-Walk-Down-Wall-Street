@@ -84,44 +84,40 @@ def compute_correlation_companies(company_1, company_2, start_year, start_month,
     e = int(end_month)
     f = int(end_day)
 
-    # Test Conditions to handle same start and end date
+    # Error: same start and end date
     if ((a == d) and (b == e) and (c == f)):
-        print("The start and end dates are the same. No possible analysis can be done.")
+        print("The start and end dates must be different")
         sys.exit()
 
-    # Test Conditions to handle exceptions where the months exist out of range
+    # Error: the months exist out of range
     if ((b < 1 or b > 12) or (e < 1 or e > 12)):
-        print("There's an issue with the month for start_month or end_month. Please ensure it's between 1 and 12!")
+        print("Month out of range")
         sys.exit()
 
-    # Test conditions to handle exceptions where days are out of range for non-leap years and regular months
-    if ((c < 1) or (f < 1) or ((b == 2 or e == 2) and (c > 28 or f > 28) and (a % 4 != 0 or d % 4 != 0 ))):
-        print("There's an issue with the day for either the start date of analysis or end date of analysis!")
+    # Error: days are out of range for non-leap years and regular months
+    if ((c < 1) or (f < 1) or (c > 31) or (f > 31) or ( (b == 2 or e == 2) and (c > 28 or f > 28) and (a % 4 != 0 or d % 4 != 0 ) ) ):
+        print("Day out of range")
         sys.exit()
 
-    # Test Conditions to handle leap year days in the month of February
+    # Error: day out of range for leap year
     if ((b == 2 or e == 2) and (c > 29 or f > 29) and (a % 4 == 0 or d % 4 == 0)):
-        print("This is an leap year, the start day and end day are potentially wrong!")
+        print("Day out of range")
         sys.exit()
 
-    # Test Conditions to handle months with 31 days for start date
-    if ((b == 1 or b == 3 or b == 5 or b == 7 or b == 8 or b == 10 or b == 12) and (c > 31)):
-        print("There is an issue with the day for the start-date.")
+    # Error: handle months with 31 days
+    if ((b == 1 or b == 3 or b == 5 or b == 7 or b == 8 or b == 10 or b == 12 or
+         e == 1 or e == 3 or e == 5 or e == 7 or e == 8 or e == 10 or e == 12 ) and (c > 31)):
+        print("Day out of range")
         sys.exit()
 
-    # Test Conditions to handle months with 30 days for start date
-    if ((b == 4 or b == 6 or b == 9 or b == 11) and (c > 30)):
-        print("There is an issue with the day for the start-date.")
+    # Error: handle months with 30 days
+    if ((b == 4 or b == 6 or b == 9 or b == 11 or e == 4 or e == 6 or e == 9 or e == 11 ) and (c > 30)):
+        print("Day out of range")
         sys.exit()
 
-    # Test Conditions to handle months with 31 days for end date
-    if ((e == 1 or e == 3 or e == 5 or e == 7 or e == 8 or e == 10 or e == 12) and (f > 31)):
-        print("There is an issue with the day for the end-date.")
-        sys.exit()
-
-    # Test Conditions to handle months with 30 days for end date
-    if ((e == 4 or e == 6 or e == 9 or e == 11) and (f > 30)):
-        print("There is an issue with the day for the end-date.")
+    # Error: start date later than end date
+    if ( (a < d) or (a == d and ( (b < e) or (c < f) ) ) ):
+        print ("Start date must be earlier than end date")
         sys.exit()
 
 
@@ -155,6 +151,42 @@ def compute_volatility(company, start_year, start_month, start_day, end_year, en
     e = int(end_month)
     f = int(end_day)
 
+    # Error: same start and end date
+    if ((a == d) and (b == e) and (c == f)):
+        print("The start and end dates must be different")
+        sys.exit()
+
+    # Error: the months exist out of range
+    if ((b < 1 or b > 12) or (e < 1 or e > 12)):
+        print("Month out of range")
+        sys.exit()
+
+    # Error: days are out of range for non-leap years and regular months
+    if ((c < 1) or (f < 1) or (c > 31) or (f > 31) or ( (b == 2 or e == 2) and (c > 28 or f > 28) and (a % 4 != 0 or d % 4 != 0 ) ) ):
+        print("Day out of range")
+        sys.exit()
+
+    # Error: day out of range for leap year
+    if ((b == 2 or e == 2) and (c > 29 or f > 29) and (a % 4 == 0 or d % 4 == 0)):
+        print("Day out of range")
+        sys.exit()
+
+    # Error: handle months with 31 days
+    if ((b == 1 or b == 3 or b == 5 or b == 7 or b == 8 or b == 10 or b == 12 or
+         e == 1 or e == 3 or e == 5 or e == 7 or e == 8 or e == 10 or e == 12 ) and (c > 31)):
+        print("Day out of range")
+        sys.exit()
+
+    # Error: handle months with 30 days
+    if ((b == 4 or b == 6 or b == 9 or b == 11 or e == 4 or e == 6 or e == 9 or e == 11 ) and (c > 30)):
+        print("Day out of range")
+        sys.exit()
+
+    # Error: start date later than end date
+    if ( (a < d) or (a == d and ( (b < e) or (c < f) ) ) ):
+        print ("Start date must be earlier than end date")
+        sys.exit()
+
     temp = pdr.get_data_yahoo(symbols = company, start =  datetime(a, b, c), end = datetime(d, e, f))
     comp_list = []
     x = 0
@@ -182,6 +214,42 @@ def compute_average_daily_price_change(company, start_year, start_month, start_d
     e = int(end_month)
     f = int(end_day)
 
+    # Error: same start and end date
+    if ((a == d) and (b == e) and (c == f)):
+        print("The start and end dates must be different")
+        sys.exit()
+
+    # Error: the months exist out of range
+    if ((b < 1 or b > 12) or (e < 1 or e > 12)):
+        print("Month out of range")
+        sys.exit()
+
+    # Error: days are out of range for non-leap years and regular months
+    if ((c < 1) or (f < 1) or (c > 31) or (f > 31) or ( (b == 2 or e == 2) and (c > 28 or f > 28) and (a % 4 != 0 or d % 4 != 0 ) ) ):
+        print("Day out of range")
+        sys.exit()
+
+    # Error: day out of range for leap year
+    if ((b == 2 or e == 2) and (c > 29 or f > 29) and (a % 4 == 0 or d % 4 == 0)):
+        print("Day out of range")
+        sys.exit()
+
+    # Error: handle months with 31 days
+    if ((b == 1 or b == 3 or b == 5 or b == 7 or b == 8 or b == 10 or b == 12 or
+         e == 1 or e == 3 or e == 5 or e == 7 or e == 8 or e == 10 or e == 12 ) and (c > 31)):
+        print("Day out of range")
+        sys.exit()
+
+    # Error: handle months with 30 days
+    if ((b == 4 or b == 6 or b == 9 or b == 11 or e == 4 or e == 6 or e == 9 or e == 11 ) and (c > 30)):
+        print("Day out of range")
+        sys.exit()
+
+    # Error: start date later than end date
+    if ( (a < d) or (a == d and ( (b < e) or (c < f) ) ) ):
+        print ("Start date must be earlier than end date")
+        sys.exit()
+
     temp = pdr.get_data_yahoo(symbols = company, start =  datetime(a, b, c), end = datetime(d, e, f))
     change_sum = 0
     x = 0
@@ -194,8 +262,11 @@ def compute_average_daily_price_change(company, start_year, start_month, start_d
         change_sum += answer
         x += 1
 
+    y = round((change_sum/(len(temp)-1)), 2)
+    y = str(y) + "%"
+    print(y)
     #answer is given as %
-    return round((change_sum/(len(temp)-1)), 2)
+    return y
 
 #uses period of last 14 trading days
 #returns value between 0-100
@@ -205,6 +276,32 @@ def compute_stochastic_oscillator(company, year, month, day):
     a = int(year)
     b = int(month)
     c = int(day)
+
+
+    # Error: the months exist out of range
+    if (b < 1 or b > 12):
+        print("Month out of range")
+        sys.exit()
+
+    # Error: days are out of range for non-leap years and regular months
+    if ((c < 1) or (c > 31) or ( b == 2 and c > 28  and a % 4 != 0 ) ):
+        print("Day out of range")
+        sys.exit()
+
+    # Error: day out of range for leap year
+    if ((b == 2) and (c > 29) and (a % 4 == 0):
+        print("Day out of range")
+        sys.exit()
+
+    # Error: handle months with 31 days
+    if ((b == 1 or b == 3 or b == 5 or b == 7 or b == 8 or b == 10 or b == 12) and (c > 31)):
+        print("Day out of range")
+        sys.exit()
+
+    # Error: handle months with 30 days
+    if ((b == 4 or b == 6 or b == 9 or b == 11 ) and (c > 30)):
+        print("Day out of range")
+        sys.exit()
 
     d = a
     e = b-1
@@ -229,7 +326,10 @@ def compute_stochastic_oscillator(company, year, month, day):
     high = np.max(comp_list)
     closing = comp_list[13]
     answer = ( (closing - low)/(high - low) ) * 100
-    return round(answer, 2)
+    answer = round(answer, 2)
+    x = str(answer) + "%"
+    print(x)
+    return answer
 
 
 #PART 4: entering command line input to get analysis
@@ -239,7 +339,7 @@ while True:
     selection = input("Enter option here: ")
     if selection == '1':
         print("________________________________________________________________________________")
-        print("\nInstructions: \nEnter in 1 to compute correlation coefficient between two data points \nEnter in 2 to compute volatility \nEnter in 3 to compute stochastic oscillator\nEnter in 4 to compute average daily percent change")
+        print("Instructions: \nEnter in 1 to compute correlation coefficient between two data points \nEnter in 2 to compute volatility \nEnter in 3 to compute stochastic oscillator\nEnter in 4 to compute average daily percent change")
         next_selection = input("Enter option here: ")
         if next_selection == '1':
             enter_company_1 = input("Enter a ticker here: ")
@@ -272,7 +372,7 @@ while True:
             enter_date = input("Enter in today's date (ex: 2020, 8, 12): ")
             date_list = enter_date.split(", ")
             print("Here is the stochastic oscillator for %s: " %enter_company)
-            print(compute_stochastic_oscillator(enter_company, date_list[0], date_list[1], date_list[2]))
+            compute_stochastic_oscillator(enter_company, date_list[0], date_list[1], date_list[2])
             print("________________________________________________________________________________")
             print("\n")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
@@ -285,7 +385,7 @@ while True:
             end_list = enter_end.split(", ")
 
             print("Here is the average daily percent change for %s " %enter_company)
-            print(compute_average_daily_price_change(enter_company,start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2]))
+            compute_average_daily_price_change(enter_company,start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2])
             print("________________________________________________________________________________")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
 
@@ -297,7 +397,7 @@ while True:
 
     if selection == '2':
         print("________________________________________________________________________________")
-        print("\nInstructions: \nEnter in 1 to get a list of relevant market indexes \nEnter in 2 to get a list of US market sectors \nEnter in 3 to get a list of commodities and currencies")
+        print("Instructions: \nEnter in 1 to get a list of relevant market indexes \nEnter in 2 to get a list of US market sectors \nEnter in 3 to get a list of commodities and currencies")
         next_selection = input("Enter option here: ")
         if next_selection == '1':
             print("________________________________________________________________________________")
