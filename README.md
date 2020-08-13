@@ -3,7 +3,7 @@
 <ul>
 <li>To test if there are correlations between US stock returns and other variables (world currencies, commodities prices, etc) 
 <ul>
-<li> ex: are movements in US stocks correlated to movements in interest rates? </li>
+<li> ex: are movements in materials stocks correlated to movements in the yen? </li>
 </ul>
 </ul>
 <ul>  
@@ -15,4 +15,4 @@
 <br> DEVELOPER INSTRUCTIONS </br>
 <br>(1) in the command line type pip install pandas-datareader</br>
 <br>(2) while in this git directory type python random_walk.py to excecute the file</br>
-<br>(3) enter in instructions into the command line when prompted to compute correlation coefficient</br>
+<br>(3) enter in instructions into the command line when prompted to begin analysis</br>
