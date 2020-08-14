@@ -527,7 +527,7 @@ while True:
     selection = input("Enter option here: ")
     if selection == '1':
         print("________________________________________________________________________________")
-        print("Instructions: \nEnter in 1 to compute correlation coefficient between two data points \nEnter in 2 to compute volatility \nEnter in 3 to compute stochastic oscillator\nEnter in 4 to compute average daily percent change")
+        print("Instructions: \nEnter in 1 to compute correlation coefficient between two data points \nEnter in 2 to compute volatility \nEnter in 3 to compute stochastic oscillator\nEnter in 4 to compute average daily percent change\nEnter in 5 to compute exponential moving average\nEnter in 6 to do polynomial approximations")
         next_selection = input("Enter option here: ")
         if next_selection == '1':
             enter_company_1 = input("Enter a ticker here: ")
@@ -541,21 +541,6 @@ while True:
             print(compute_correlation_companies(enter_company_1, enter_company_2,
             start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
 
-            #FIX
-            comlist1, comlist2 = companies_lists(enter_company_1, enter_company_2,
-            start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] )
-            #i = 1
-            #while i <=10:##graphing the first 10 degree polynomials
-            #    print(f"Degree {i} polynomial:")
-            #    x = np.arange(0, 1000, 0.001)
-            #    y = data_discrete(comlist1,comlist2,i)(x) # Python distinguish lower and upper cases.
-
-            #    line = plt.plot(x, y, lw = 1)
-                #plt.annotate('f(x)', xy = (0, 1), xytext = (2, 1),
-                #arrowprops = dict(facecolor = 'black', shrink = 0.01))
-            #    plt.ylim(0, 10000)
-            #    plt.show()
-            #    i+=1
             print("________________________________________________________________________________")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
@@ -593,8 +578,43 @@ while True:
             print("________________________________________________________________________________")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
+        if next_selection == '5':
+            enter_company = input("Enter a ticker here: ")
+            enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
+            enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
+            start_list = enter_start.split(", ")
+            end_list = enter_end.split(", ")
 
-        if next_selection != '1' and next_selection != '2' and next_selection != '3' and next_selection != '4':
+            print("Here is the exponential moving average for %s " %enter_company)
+            print(compute_exponential_moving_average(enter_company,start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2]))
+
+        if next_selection == '6':
+            enter_company_1 = input("Enter a ticker here: ")
+            enter_company_2 = input("Enter another ticker here: ")
+            enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
+            enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
+            #FOR FARHAN
+            #enter_n_degree = input("Enter the degree you want your polynomial as: ")
+            # ^ you can use enter_n_degree as an int now
+            start_list = enter_start.split(", ")
+            end_list = enter_end.split(", ")
+            comlist1, comlist2 = companies_lists(enter_company_1, enter_company_2, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] )
+            i = 1
+            print("Here is the n degree ")
+            while i <=10:##graphing the first 10 degree polynomials
+                print(f"Degree {i} polynomial:")
+                x = np.arange(0, 1000, 0.001)
+                y = data_discrete(comlist1,comlist2,i)(x) # Python distinguish lower and upper cases.
+                line = plt.plot(x, y, lw = 1)
+                #plt.annotate('f(x)', xy = (0, 1), xytext = (2, 1),
+                #arrowprops = dict(facecolor = 'black', shrink = 0.01))
+                plt.ylim(0, 10000)
+                plt.show()
+                i+=1
+
+
+
+        if next_selection != '1' and next_selection != '2' and next_selection != '3' and next_selection != '4' and next_selection != '5' and next_selection != '6':
             print("Incorrect input entered\n")
             print("________________________________________________________________________________")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
