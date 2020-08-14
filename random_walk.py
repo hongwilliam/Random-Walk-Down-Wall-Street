@@ -145,6 +145,35 @@ def compute_correlation_companies(company_1, company_2, start_year, start_month,
     comp2_list = pd.Series(comp2_list)
     return round(comp1_list.corr(comp2_list), 2)
 
+def companies_lists(company_1, company_2, start_year, start_month, start_day, end_year, end_month, end_day):
+    a = int(start_year)
+    b = int(start_month)
+    c = int(start_day)
+    d = int(end_year)
+    e = int(end_month)
+    f = int(end_day)
+    temp_1 = pdr.get_data_yahoo(symbols = company_1, start =  datetime(a, b, c), end = datetime(d, e, f))
+    temp_2 = pdr.get_data_yahoo(symbols = company_2, start =  datetime(a, b, c), end = datetime(d, e, f))
+    comp1_list = []
+    comp2_list = []
+    x = 0
+    while (x < len(temp_1)):
+        entry = temp_1['Close'][x]
+        entry = round(entry, 2)
+        comp1_list.append(entry)
+        x += 1
+
+    y = 0
+    while (y < len(temp_2)):
+        entry = temp_2['Close'][y]
+        entry = round(entry, 2)
+        comp2_list.append(entry)
+        y += 1
+
+    comp1_list = pd.Series(comp1_list)
+    comp2_list = pd.Series(comp2_list)
+    return comp1_list,comp2_list
+
 def compute_volatility(company, start_year, start_month, start_day, end_year, end_month, end_day):
     a = int(start_year)
     b = int(start_month)
@@ -513,9 +542,8 @@ while True:
             start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
 
             #FIX
-            #correlation_coe, comlist1, comlist2 = compute_correlation_companies(enter_company_1, enter_company_2,
-            #start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] )
-            #print(correlation_coe)
+            comlist1, comlist2 = companies_lists(enter_company_1, enter_company_2,
+            start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] )
             #i = 1
             #while i <=10:##graphing the first 10 degree polynomials
             #    print(f"Degree {i} polynomial:")
