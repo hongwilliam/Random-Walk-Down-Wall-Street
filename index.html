@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>RWDWS</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento" rel="stylesheet">
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+  <div class="top-container">
+    <div class="title-text">
+      <img class="banner-img" src="images/wallstreet.jpeg" alt="banner-img">
+      <div class="centered">
+        <h1>Random Walk Down Wall St.</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="middle-container">
+    <div class="about">
+      <h2>About</h2>
+      <div class="about-row">
+        <h3>Introduction</h3>
+        <p>
+          In Burton G. Malkiel’s investment classic <i>A Random Walk Down Street,</i> a general argument is made that investors - both individual and institutional - almost never consistently outperform “the market,” the S&P 500 index tracking the
+          performance of about the 500 largest companies listed in U.S. stock exchanges. Malkiel claims that one is better off putting their money in an S&P 500 fund - which has yielded roughly 10% every year - rather than attempting to pick
+          individual stocks that undergo “random walks”.
+        </p>
+        <p>
+          Several individuals have established track records of defying Malkiel’s claim: <b>Warren Buffett, Jim Simons, Ray Dalio, George Soros,</b> and others. Are they merely statistical outliers or is Malkiel underestimating the predictability of
+          stock markets? Our goal is to ascertain if there is some truth behind the “random walk” description of the stock market and if some level of predictability exists within it. This project provides analytical tools to the user so they can
+          historically backtest data and determine for themselves if one can in fact “beat the market.”
+        </p>
+        <h3>Our Tool</h3>
+        <p>
+          Our terminal based project is an interactive analytical tool for the financially inclined user. Once compiling the file random_walk.py in the terminal, the user starts with 3 main options in a continuously running command line: (1) use
+          analytical tools, (2) read a list of useful tickers, and (3) exit the program.
+          For the first main option, there are 4 additional prompts that the user can choose to pick an analytical tool.
+        </p>
+        <p>
+          <u>(1) Correlation coefficient:</u> This mathematical function analyzes movements of two data points and returns a number from -1 to 1 inclusive. The greater the absolute value of the correlation coefficient, the more strongly correlated
+          the two data points are. A positive correlation coefficient indicates a positive correlation, a negative correlation coefficient indicates a negative correlation. The user is prompted to enter in two companies (or other financial data
+          points), and a time interval to conduct analysis.
+        </p>
+        <center>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/J3pF2jkQ4vc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </center>
+        <p>
+          <u>(2) Volatility:</u> Volatility is a measure of risk. Greater volatility means greater dispersion of outcomes, i.e, standard deviation. This function prints out both the mean and standard deviation of the entered company (or other
+          financial data points) in the entered time interval.
+        </p>
+        <p>
+          <u>(3) Stochastic oscillator:</u> This is a trading tool used to indicate how overbought or oversold a stock is. The range of values is from 0 to 100, with higher values indicating stronger signals of a stock being overbought. The user is
+          prompted to enter in a company and the current date. The time interval considered for this analysis is the last 14 trading days. For rule of thumb, a stochastic oscillator value > 80 indicates overbought, while a value < 20 indicates
+            oversold.
+        </p>
+        <center>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/_f4_pshMF3M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </center>
+        <p>
+          <u>(4) Average daily percent change:</u> This simple statistic is self-explanatory and can be used to assess the volatility and momentum of a given company (or other financial data point) in the entered time interval. A high average
+          daily percent change can indicate a risky investment or can also indicate a strong trend if a short time interval is considered.
+          For the second main option, there are additional prompts the user can choose to read a list of useful tickers to enter into the analytical functions. Since this project depends on data retrieved from Yahoo! Finance, specific tickers
+          must be entered for special financial data points such as market indexes, market sectors, commodities, and currency exchange rates. These tickers are not readily found on Yahoo Finance and are provided for the user to access should they
+          be curious about analyzing data outside of individual stocks. In this option, the user will be prompted to enter in what kind of data they wish to seek [1 - market indexes, 2 - US market sectors, 3 - commodities and currency exchange
+          rates].
+        </p>
+        <a href="https://github.com/hongwilliam/Random-Walk-Down-Wall-Street">The Github link to our project is here, where you can experiment with the code yourself and use the tool.</a>
+      </div>
+      <h2>The 11 Sectors</h2>
+      <div class="about-row">
+      <p>The US stocks are divided amongst 11 sectors, which we suggest comparing to see any relations.</p>
+      <p>1. CONS DISC</p>
+      <p>2. CONSC STAPLES</p>
+      <p>3. ENERGY</p>
+      <p>4. FINANCIALS</p>
+      <p>5. HEALTH</p>
+      <p>6. INDUSTRIALS</p>
+      <p>7. MATERIALS</p>
+      <p>8. REAL ESTATE</p>
+      <p>9. TECHNOLOGY</p>
+      <p>10. COMMUNICATION SVS</p>
+      <p>11. UTILITIES</p>
+      </div>
+<hr>
+      <p><u>Members:</u> Wiliam Hong, Daniel Han, Aaron Chen, Farhan Azad</p>
+<hr>
+      <!-- <div class="contact-me">
+        <h2>Contact</h2>
+        <p class="contact-message">Reach us at</p>
+        <a href="https://github.com/hongwilliam/Random-Walk-Down-Wall-Street">Here</a>
+      </div>
+    </div> -->
+
+
+    <div class="bottom-container">
+      <a class="footer-link" href="https://github.com/hongwilliam/Random-Walk-Down-Wall-Street">Github</a>
+      <p class="copyright">© 2020</p>
+    </div>
+</body>
+
+</html>
