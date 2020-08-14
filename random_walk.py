@@ -7,6 +7,8 @@ import pandas_datareader as pdr
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 import sys
+from numpy.polynomial import Polynomial as P
+import numpy.linalg as la
 
 #DEVELOPER INSTRUCTIONS
 
@@ -459,6 +461,32 @@ def stock_obv_visual(company, start_year, start_month, start_day, end_year, end_
     plt.show()
     # return temp.tail(20)
 
+def data_discrete(x_values,y_values,n):
+    coeficients=[]
+    b_matrix=np.ndarray(shape = (n+1, n+1), dtype = 'float')
+    c_matrix=np.ndarray(shape = (n+1, 1), dtype = 'float')
+    i = 0
+    while i <=n:
+        j = 0
+        c_value=0
+        while j <=n:
+            b_value = 0
+            for m in range(len(x_values)):
+                b_value +=(x_values[m])**(i+j)
+            b_matrix[i][j]= b_value
+            j+=1
+        for a in range(len(y_values)):
+            c_value += (x_values[a])**i *y_values[a]
+        c_matrix[i][0]=c_value
+        i+=1
+    #print(b_matrix)
+    #print(c_matrix)
+    a_values = la.solve(b_matrix,c_matrix)
+    for p in range (len(a_values)):
+        coeficients.append(a_values[p][0])
+    p_f = P(coeficients)
+    return p_f
+
 print(stock_obv_visual('TSLA', 2019, 6, 7, 2020, 8, 12))
 
 
@@ -481,8 +509,22 @@ while True:
             end_list = enter_end.split(", ")
 
             print("Here is the correlaton coefficient between %s and %s: " %(enter_company_1, enter_company_2))
-            print(compute_correlation_companies(enter_company_1, enter_company_2,
-            start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
+            correlation_coe, comlist1, comlist2 = compute_correlation_companies(enter_company_1, enter_company_2,
+            start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] )
+            print(correlation_coe)
+            i = 1
+            while i <=10:##graphing the first 10 degree polynomials
+                print(f"Degree {i} polynomial:")
+                x = np.arange(0, 1000, 0.001)
+                y = data_discrete(comlist1,comlist2,i)(x) # Python distinguish lower and upper cases.
+
+                line = plt.plot(x, y, lw = 1)
+                #plt.annotate('f(x)', xy = (0, 1), xytext = (2, 1),
+                #arrowprops = dict(facecolor = 'black', shrink = 0.01))
+                plt.ylim(0, 10000)
+                plt.show()
+                i+=1
+
             print("________________________________________________________________________________")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
 
