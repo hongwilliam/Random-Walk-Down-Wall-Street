@@ -474,20 +474,20 @@ def stock_obv_visual(company, start_year, start_month, start_day, end_year, end_
     temp.set_index("Date", inplace = True)
 
     # Plotting the Close Price
-    plt.figure(figsize = (50, 10))
+    plt.figure(figsize = (20, 6))
     plt.plot(temp['Close'])
     plt.title('Price History Over Time')
     plt.ylabel('Share Price in USD')
     plt.xlabel('Date')
-    plt.show()
+    plt.show(block = False)
 
     # Plotting the Volume
-    plt.figure(figsize = (50, 10))
+    plt.figure(figsize = (20, 6))
     plt.plot(temp['Volume']/1000000)
     plt.title('Trade Volumes Over Time')
     plt.ylabel('Trade Volumes in Millions')
     plt.xlabel('Date')
-    plt.show()
+    plt.show(block = False)
     # return temp.tail(20)
 
 #print(stock_obv_visual('TSLA', 2019, 6, 7, 2020, 8, 12))
@@ -675,7 +675,6 @@ while True:
     if selection == '3':
         print("________________________________________________________________________________")
         enter_company = input("Enter a ticker here: ")
-        enter_date = input("Enter in today's date (ex: 2020, 8, 12): ")
         enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
         enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
         start_list = enter_start.split(", ")
