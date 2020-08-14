@@ -436,7 +436,7 @@ def stock_obv_visual(company, start_year, start_month, start_day, end_year, end_
     if ( (a > d) or (a == d and ( (b > e) or ( (b == e and c > f) ) ) ) ):
         print ("Start date must be earlier than end date")
         sys.exit()
-    
+
     # Obtaining data from the Yahoo Finance Website
     # style.use('ggplot')
     temp = pdr.get_data_yahoo(company, start =  datetime(a, b, c), end = datetime(d, e, f))
@@ -460,6 +460,8 @@ def stock_obv_visual(company, start_year, start_month, start_day, end_year, end_
     plt.xlabel('Date')
     plt.show()
     # return temp.tail(20)
+
+#print(stock_obv_visual('TSLA', 2019, 6, 7, 2020, 8, 12))
 
 def data_discrete(x_values,y_values,n):
     coeficients=[]
@@ -487,13 +489,11 @@ def data_discrete(x_values,y_values,n):
     p_f = P(coeficients)
     return p_f
 
-print(stock_obv_visual('TSLA', 2019, 6, 7, 2020, 8, 12))
-
 
 
 #PART 4: entering command line input to get analysis
 #THIS IS THE COOL SHIT
-print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to exit the program")
+print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 while True:
     selection = input("Enter option here: ")
     if selection == '1':
@@ -509,24 +509,27 @@ while True:
             end_list = enter_end.split(", ")
 
             print("Here is the correlaton coefficient between %s and %s: " %(enter_company_1, enter_company_2))
-            correlation_coe, comlist1, comlist2 = compute_correlation_companies(enter_company_1, enter_company_2,
-            start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] )
-            print(correlation_coe)
-            i = 1
-            while i <=10:##graphing the first 10 degree polynomials
-                print(f"Degree {i} polynomial:")
-                x = np.arange(0, 1000, 0.001)
-                y = data_discrete(comlist1,comlist2,i)(x) # Python distinguish lower and upper cases.
+            print(compute_correlation_companies(enter_company_1, enter_company_2,
+            start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
 
-                line = plt.plot(x, y, lw = 1)
+            #FIX
+            #correlation_coe, comlist1, comlist2 = compute_correlation_companies(enter_company_1, enter_company_2,
+            #start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] )
+            #print(correlation_coe)
+            #i = 1
+            #while i <=10:##graphing the first 10 degree polynomials
+            #    print(f"Degree {i} polynomial:")
+            #    x = np.arange(0, 1000, 0.001)
+            #    y = data_discrete(comlist1,comlist2,i)(x) # Python distinguish lower and upper cases.
+
+            #    line = plt.plot(x, y, lw = 1)
                 #plt.annotate('f(x)', xy = (0, 1), xytext = (2, 1),
                 #arrowprops = dict(facecolor = 'black', shrink = 0.01))
-                plt.ylim(0, 10000)
-                plt.show()
-                i+=1
-
+            #    plt.ylim(0, 10000)
+            #    plt.show()
+            #    i+=1
             print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
         if next_selection == '2':
             enter_company = input("Enter a ticker here: ")
@@ -538,7 +541,7 @@ while True:
             compute_volatility(enter_company, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2])
             print("________________________________________________________________________________")
             print("\n")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
         if next_selection == '3':
             enter_company = input("Enter a ticker here: ")
@@ -548,7 +551,7 @@ while True:
             compute_stochastic_oscillator(enter_company, date_list[0], date_list[1], date_list[2])
             print("________________________________________________________________________________")
             print("\n")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
         if next_selection == '4':
             enter_company = input("Enter a ticker here: ")
@@ -560,13 +563,13 @@ while True:
             print("Here is the average daily percent change for %s " %enter_company)
             compute_average_daily_price_change(enter_company,start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2])
             print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
 
         if next_selection != '1' and next_selection != '2' and next_selection != '3' and next_selection != '4':
             print("Incorrect input entered\n")
             print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
     if selection == '2':
         print("________________________________________________________________________________")
@@ -584,7 +587,7 @@ while True:
             h = "VIX Volatility Index: ^VIX\n"
             print(a+b+c+d+e+f+g+h)
             print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
         if next_selection == '2':
             print("________________________________________________________________________________")
             a = "\nBelow are some tickers you can enter that represent market sectors\n"
@@ -601,7 +604,7 @@ while True:
             l = "Utilities: XLU\n"
             print(a+b+c+d+e+f+g+h+i+j+k+l)
             print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
         if next_selection == '3':
             print("________________________________________________________________________________")
             a = "\nBelow are some tickers you can enter that track commodities and currencies\n"
@@ -614,16 +617,31 @@ while True:
             h = "US Dollar/Yen Exchage Rate: JPY=X\n"
             print(a+b+c+d+e+f+g+h)
             print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
         if next_selection != '1' and next_selection != '2' and next_selection != '3':
             print("Incorrect input entered\n")
             print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
+
 
     if selection == '3':
+        print("________________________________________________________________________________")
+        enter_company = input("Enter a ticker here: ")
+        enter_date = input("Enter in today's date (ex: 2020, 8, 12): ")
+        enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
+        enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
+        start_list = enter_start.split(", ")
+        end_list = enter_end.split(", ")
+        print("Here is the price over time and volume over time for %s: " %enter_company)
+        print(stock_obv_visual(enter_company,start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
+        print("________________________________________________________________________________")
+        print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
+
+
+    if selection == '4':
         sys.exit()
 
-    if selection != '1' and selection != '2' and selection != '3':
+    if selection != '1' and selection != '2' and selection != '3' and selection != '4':
         print("Incorrect input entered\n")
         print("________________________________________________________________________________")
-        print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers \nEnter in 3 to exit the program")
+        print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
