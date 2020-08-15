@@ -706,18 +706,16 @@ while True:
             start_list = enter_start.split(", ")
             end_list = enter_end.split(", ")
             comlist1, comlist2 = companies_lists(enter_company_1, enter_company_2, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] )
-            i = 1
-            print("Here is the n degree ")
-            while i <=10:##graphing the first 10 degree polynomials
-                print(f"Degree {i} polynomial:")
-                x = np.arange(0, 1000, 0.001)
-                y = data_discrete(comlist1,comlist2,i)(x) # Python distinguish lower and upper cases.
-                line = plt.plot(x, y, lw = 1)
-                #plt.annotate('f(x)', xy = (0, 1), xytext = (2, 1),
-                #arrowprops = dict(facecolor = 'black', shrink = 0.01))
-                plt.ylim(0, 10000)
-                plt.show()
-                i+=1
+            i = 10
+            ##graphing the 10 degree polynomial
+            print(f"This is the degree {i} polynomial:")
+            x = np.arange(0, 1000, 0.001)
+            y = data_discrete(comlist1,comlist2,i)(x) # Python distinguish lower and upper cases.
+            line = plt.plot(x, y, lw = 1)
+            #plt.annotate('f(x)', xy = (0, 1), xytext = (2, 1),
+            #arrowprops = dict(facecolor = 'black', shrink = 0.01))
+            plt.ylim(-1000, 10000)
+            plt.show()
 
             if next_selection != '1' and next_selection != '2':
                 print("Incorrect input entered\n")
