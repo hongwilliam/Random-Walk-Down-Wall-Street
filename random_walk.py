@@ -709,12 +709,12 @@ while True:
             i = 10
             ##graphing the 10 degree polynomial
             print(f"This is the degree {i} polynomial:")
-            x = np.arange(0, 1000, 0.001)
+            x = np.arange(-1000, 1000, 0.001)
             y = data_discrete(comlist1,comlist2,i)(x) # Python distinguish lower and upper cases.
             line = plt.plot(x, y, lw = 1)
             #plt.annotate('f(x)', xy = (0, 1), xytext = (2, 1),
             #arrowprops = dict(facecolor = 'black', shrink = 0.01))
-            plt.ylim(-1000, 10000)
+            plt.ylim(-10000, 10000)
             plt.show()
 
             if next_selection != '1' and next_selection != '2':
