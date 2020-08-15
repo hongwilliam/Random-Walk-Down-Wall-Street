@@ -627,7 +627,7 @@ while True:
             e = "Energy: VDE\n"
             f = "Financials: VFH\n"
             g = "Health: VHT\n"
-            h = "Industrials: VIS\n"
+            h = "Industrials: VAW\n"
             i = "Materials: VMC\n"
             j = "Real Estate: VNQ\n"
             k = "Technology: VGT\n"
