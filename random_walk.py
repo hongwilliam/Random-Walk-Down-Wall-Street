@@ -527,7 +527,7 @@ while True:
     selection = input("Enter option here: ")
     if selection == '1':
         print("________________________________________________________________________________")
-        print("Instructions: \nEnter in 1 to compute correlation coefficient between two data points \nEnter in 2 to compute volatility \nEnter in 3 to compute stochastic oscillator\nEnter in 4 to compute average daily percent change\nEnter in 5 to compute exponential moving average\nEnter in 6 to do polynomial approximations")
+        print("Instructions: \nEnter in 1 to compute correlation coefficient between two data points \nEnter in 2 to compute volatility \nEnter in 3 to compute stochastic oscillator\nEnter in 4 to compute average daily percent change\nEnter in 5 to compute exponential moving average")
         next_selection = input("Enter option here: ")
         if next_selection == '1':
             enter_company_1 = input("Enter a ticker here: ")
@@ -553,7 +553,6 @@ while True:
             print("Here is the volatility analysis for %s: " %enter_company)
             compute_volatility(enter_company, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2])
             print("________________________________________________________________________________")
-            print("\n")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
         if next_selection == '3':
@@ -563,7 +562,6 @@ while True:
             print("Here is the stochastic oscillator for %s: " %enter_company)
             compute_stochastic_oscillator(enter_company, date_list[0], date_list[1], date_list[2])
             print("________________________________________________________________________________")
-            print("\n")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
         if next_selection == '4':
@@ -587,8 +585,117 @@ while True:
 
             print("Here is the exponential moving average for %s " %enter_company)
             print(compute_exponential_moving_average(enter_company,start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2]))
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
-        if next_selection == '6':
+        if next_selection != '1' and next_selection != '2' and next_selection != '3' and next_selection != '4' and next_selection != '5':
+            print("Incorrect input entered\n")
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
+
+    if selection == '2':
+        print("________________________________________________________________________________")
+        print("Instructions: \nEnter in 1 to get a list of relevant market indexes \nEnter in 2 to get a list of US market sectors \nEnter in 3 to get a list of commodities\nEnter in 4 to get a list of US Treasury bonds and currencies")
+        next_selection = input("Enter option here: ")
+        if next_selection == '1':
+            print("________________________________________________________________________________")
+            a = "\nBelow are some tickers you can enter that track market indexes\n"
+            b = "S&P 500: ^GSPC\n"
+            c = "Dow Jones Industrial Average: ^DJI\n"
+            d = "NASDAQ Composite: ^IXIC\n"
+            e = "Russell 2000: ^RUT \n"
+            f = "S&P 400: ^SP400\n"
+            g = "FTSE 100: %5EFTSE%3FP%3DFTSE\n"
+            h = "EURO Stoxx 50: ^STOXX50E\n"
+            i = "DAX 30: ^GDAXI\n"
+            j = "CAC 40: ^FCHI\n"
+            k = "Nikkei 225: ^N225\n"
+            l = "Shanghai Composite: 000001.SS\n"
+            m = "Hang Seng Index: ^HSI\n"
+            n = "KOSPI: ^KS11\n"
+            o = "Bovespa Index: BVSP\n"
+            p = "VIX Volatility Index: ^VIX"
+            print(a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p)
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
+        if next_selection == '2':
+            print("________________________________________________________________________________")
+            a = "\nBelow are some tickers you can enter that represent market sectors\n"
+            b = "Communication Services: VOX\n"
+            c = "Consumer Discretionary: VCR\n"
+            d = "Consumer Staples: VDC\n"
+            e = "Energy: VDE\n"
+            f = "Financials: VFH\n"
+            g = "Health: VHT\n"
+            h = "Industrials: VIS\n"
+            i = "Materials: VMC\n"
+            j = "Real Estate: VNQ\n"
+            k = "Technology: VGT\n"
+            l = "Utilities: VPU"
+            print(a+b+c+d+e+f+g+h+i+j+k+l)
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
+        if next_selection == '3':
+            print("________________________________________________________________________________")
+            a = "\nBelow are some tickers you can enter that track commodities futures\n"
+            b = "Gold: GC=F\n"
+            c = "Silver: SI=F\n"
+            d = "Copper: HG=F\n"
+            e = "Platinum: PL=F\n"
+            f = "Corn: ZC=F\n"
+            g = "Soybeans: ZS=F\n"
+            h = "Sugar: SB=F\n"
+            i = "Coffee: KC=F\n"
+            j = "Cocoa: CC=F\n"
+            k = "Cotton: CT=F\n"
+            l = "Rough Rice: ZR=F\n"
+            m = "Wheat: KE=F\n"
+            n = "Crude Oil: CL=F\n"
+            o = "Heating Oil: HO=F\n"
+            p = "RBOB Gasoline: RB=F\n"
+            q = "Natural Gas: NG=F"
+            print(a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q)
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
+
+        if next_selection == '4':
+            print("________________________________________________________________________________")
+            a = "\nBelow are some tickers you can enter that track US Treasury bond yields and currency exchange rates\n"
+            b = "US Treasury 10 Year Bond: ^TNX\n"
+            c = "US Treasury 5 Year Bond: ^FVX\n"
+            d = "US Treasury 30 Year Bond: ^TYX\n"
+            e = "US Dollar/Euro Exchange Rate: USDEUR=X\n"
+            f = "US Dollar/Yen Exchage Rate: JPY=X\n"
+            g = "US Dollar/Pound Sterling Exchange Rate: GBP=X\n"
+            h = "US Dollar/Yuan Exchange Rate: CNH=X\n"
+            i = "Euro/Yen Exchange Rate: EURJPY=X\n"
+            j = "Bitcoin/US Dollar: BTCUSD=X"
+            print(a+b+c+d+e+f+g+h+i+j)
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
+
+        if next_selection != '1' and next_selection != '2' and next_selection != '3' and next_selection != '4':
+            print("Incorrect input entered\n")
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
+
+
+    if selection == '3':
+        print("Instructions: \nEnter in 1 to chart price and volume over time \nEnter in 2 to chart polynomial approximations")
+        next_selection = input("Enter option here: ")
+        if next_selection == '1':
+            print("________________________________________________________________________________")
+            enter_company = input("Enter a ticker here: ")
+            enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
+            enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
+            start_list = enter_start.split(", ")
+            end_list = enter_end.split(", ")
+            print("Here is the price over time and volume over time for %s: " %enter_company)
+            print(stock_obv_visual(enter_company,start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
+
+        if next_selection == '2':
             enter_company_1 = input("Enter a ticker here: ")
             enter_company_2 = input("Enter another ticker here: ")
             enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
@@ -612,78 +719,10 @@ while True:
                 plt.show()
                 i+=1
 
-
-
-        if next_selection != '1' and next_selection != '2' and next_selection != '3' and next_selection != '4' and next_selection != '5' and next_selection != '6':
-            print("Incorrect input entered\n")
-            print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
-
-    if selection == '2':
-        print("________________________________________________________________________________")
-        print("Instructions: \nEnter in 1 to get a list of relevant market indexes \nEnter in 2 to get a list of US market sectors \nEnter in 3 to get a list of commodities and currencies")
-        next_selection = input("Enter option here: ")
-        if next_selection == '1':
-            print("________________________________________________________________________________")
-            a = "\nBelow are some tickers you can enter that track market indexes\n"
-            b = "S&P 500: ^GSPC\n"
-            c = "Dow Jones Industrial Average: ^DJI\n"
-            d = "NASDAQ Composite: ^IXIC\n"
-            e = "Russell 2000: ^RUT \n"
-            f = "FTSE 100: %5EFTSE%3FP%3DFTSE\n"
-            g = "Nikkei 225: ^N225\n"
-            h = "VIX Volatility Index: ^VIX\n"
-            print(a+b+c+d+e+f+g+h)
-            print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
-        if next_selection == '2':
-            print("________________________________________________________________________________")
-            a = "\nBelow are some tickers you can enter that represent market sectors\n"
-            b = "Communication Services: XLC\n"
-            c = "Consumer Discretionary: XLY\n"
-            d = "Consumer Staples: XLP\n"
-            e = "Energy: XLE\n"
-            f = "Financials: XLF\n"
-            g = "Health: XLV\n"
-            h = "Industrials: XLI\n"
-            i = "Materials: XLB\n"
-            j = "Real Estate: XLRE\n"
-            k = "Technology: XLK\n"
-            l = "Utilities: XLU\n"
-            print(a+b+c+d+e+f+g+h+i+j+k+l)
-            print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
-        if next_selection == '3':
-            print("________________________________________________________________________________")
-            a = "\nBelow are some tickers you can enter that track commodities and currencies\n"
-            b = "US Treasury 10 Year Bond: ^TNX\n"
-            c = "Crude Oil: CL=F\n"
-            d = "Gold: GC=F\n"
-            e = "Silver: SI=F\n"
-            f = "Bitcoin: BTC-USD\n"
-            g = "US Dollar/Euro Exchange Rate: USDEUR=X\n"
-            h = "US Dollar/Yen Exchage Rate: JPY=X\n"
-            print(a+b+c+d+e+f+g+h)
-            print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
-        if next_selection != '1' and next_selection != '2' and next_selection != '3':
-            print("Incorrect input entered\n")
-            print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
-
-
-    if selection == '3':
-        print("________________________________________________________________________________")
-        enter_company = input("Enter a ticker here: ")
-        enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
-        enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
-        start_list = enter_start.split(", ")
-        end_list = enter_end.split(", ")
-        print("Here is the price over time and volume over time for %s: " %enter_company)
-        print(stock_obv_visual(enter_company,start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
-        print("________________________________________________________________________________")
-        print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
-
+            if next_selection != '1' and next_selection != '2':
+                print("Incorrect input entered\n")
+                print("________________________________________________________________________________")
+                print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
     if selection == '4':
         sys.exit()
