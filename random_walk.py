@@ -700,14 +700,11 @@ while True:
             enter_company_2 = input("Enter another ticker here: ")
             enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
             enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
-            #FOR FARHAN
-            #enter_n_degree = input("Enter the degree you want your polynomial as: ")
-            # ^ you can use enter_n_degree as an int now
+            enter_n_degree = input("Enter the degree you want your polynomial as: ")
             start_list = enter_start.split(", ")
             end_list = enter_end.split(", ")
             comlist1, comlist2 = companies_lists(enter_company_1, enter_company_2, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] )
-            i = 10
-            ##graphing the 10 degree polynomial
+            i = int(enter_n_degree)
             print(f"This is the degree {i} polynomial:")
             x = np.arange(-1000, 1000, 0.001)
             y = data_discrete(comlist1,comlist2,i)(x) # Python distinguish lower and upper cases.
@@ -716,11 +713,13 @@ while True:
             #arrowprops = dict(facecolor = 'black', shrink = 0.01))
             plt.ylim(-10000, 10000)
             plt.show()
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
-            if next_selection != '1' and next_selection != '2':
-                print("Incorrect input entered\n")
-                print("________________________________________________________________________________")
-                print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
+        if next_selection != '1' and next_selection != '2':
+            print("Incorrect input entered\n")
+            print("________________________________________________________________________________")
+            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
     if selection == '4':
         sys.exit()
