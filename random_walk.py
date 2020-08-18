@@ -1,4 +1,4 @@
-#Members: William Hong, Daniel Han, 
+#Members: William Hong, Daniel Han, Aaron Chen, Farhan Azad
 
 # Libraries that are required for function performance
 import cgitb
@@ -160,7 +160,7 @@ while True:
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
         if next_selection != '1' and next_selection != '2' and next_selection != '3' and next_selection != '4' and next_selection != '5':
-            print("Incorrect input entered\n")
+            print("Incorrect input entered")
             print("________________________________________________________________________________")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
@@ -170,7 +170,7 @@ while True:
         next_selection = input("Enter option here: ")
         if next_selection == '1':
             print("________________________________________________________________________________")
-            a = "\nBelow are some tickers you can enter that track market indexes\n"
+            a = "Below are some tickers you can enter that track market indexes\n"
             b = "S&P 500: ^GSPC\n"
             c = "Dow Jones Industrial Average: ^DJI\n"
             d = "NASDAQ Composite: ^IXIC\n"
@@ -191,7 +191,7 @@ while True:
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
         if next_selection == '2':
             print("________________________________________________________________________________")
-            a = "\nBelow are some tickers you can enter that represent market sectors\n"
+            a = "Below are some tickers you can enter that represent market sectors\n"
             b = "Communication Services: VOX\n"
             c = "Consumer Discretionary: VCR\n"
             d = "Consumer Staples: VDC\n"
@@ -208,7 +208,7 @@ while True:
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
         if next_selection == '3':
             print("________________________________________________________________________________")
-            a = "\nBelow are some tickers you can enter that track commodities futures\n"
+            a = "Below are some tickers you can enter that track commodities futures\n"
             b = "Gold: GC=F\n"
             c = "Silver: SI=F\n"
             d = "Copper: HG=F\n"
@@ -231,7 +231,7 @@ while True:
 
         if next_selection == '4':
             print("________________________________________________________________________________")
-            a = "\nBelow are some tickers you can enter that track US Treasury bond yields and currency exchange rates\n"
+            a = "Below are some tickers you can enter that track US Treasury bond yields and currency exchange rates\n"
             b = "US Treasury 10 Year Bond: ^TNX\n"
             c = "US Treasury 5 Year Bond: ^FVX\n"
             d = "US Treasury 30 Year Bond: ^TYX\n"
@@ -246,13 +246,13 @@ while True:
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
         if next_selection != '1' and next_selection != '2' and next_selection != '3' and next_selection != '4':
-            print("Incorrect input entered\n")
+            print("Incorrect input entered")
             print("________________________________________________________________________________")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
 
     if selection == '3':
-        print("Instructions: \nEnter in 1 to chart price and volume over time \nEnter in 2 to chart polynomial approximations")
+        print("Instructions: \nEnter in 1 to chart price and volume over time \nEnter in 2 to chart approximations of movement between two stocks")
         next_selection = input("Enter option here: ")
         if next_selection == '1':
             print("________________________________________________________________________________")
@@ -271,7 +271,7 @@ while True:
             enter_company_2 = input("Enter another ticker here: ")
             enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
             enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
-            enter_n_degree = input("Enter the degree you want your polynomial as: ")
+            enter_n_degree = input("Enter the degree you want your polynomial as up to ~50: ")
             start_list = enter_start.split(", ")
             end_list = enter_end.split(", ")
             comlist1, comlist2 = companies_lists(enter_company_1, enter_company_2, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] )
@@ -288,7 +288,7 @@ while True:
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
         if next_selection != '1' and next_selection != '2':
-            print("Incorrect input entered\n")
+            print("Incorrect input entered")
             print("________________________________________________________________________________")
             print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
@@ -296,6 +296,6 @@ while True:
         sys.exit()
 
     if selection != '1' and selection != '2' and selection != '3' and selection != '4':
-        print("Incorrect input entered\n")
+        print("Incorrect input entered")
         print("________________________________________________________________________________")
         print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
