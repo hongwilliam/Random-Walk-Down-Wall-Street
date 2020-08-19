@@ -71,8 +71,8 @@ def stock_obv_visual(company, start_year, start_month, start_day, end_year, end_
     plt.show(block = False)
 
     # Plotting the Volume
-    plt.plot(temp['Volume']/1000000)
     plt.subplot(133)
+    plt.plot(temp['Volume']/1000000)
     plt.title('Trade Volumes Over Time')
     plt.ylabel('Trade Volumes in Millions')
     plt.xlabel('Date')
