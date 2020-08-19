@@ -96,6 +96,8 @@ while (x < len(COST)):
 print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 while True:
     selection = input("Enter option here: ")
+    plt.close()
+    plt.close()
     if selection == '1':
         print("________________________________________________________________________________")
         print("Instructions: \nEnter in 1 to compute correlation coefficient between two data points \nEnter in 2 to compute volatility \nEnter in 3 to compute stochastic oscillator\nEnter in 4 to compute average daily percent change\nEnter in 5 to compute exponential moving average")
@@ -262,9 +264,6 @@ while True:
         print(stock_obv_visual(enter_company,start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
         print("________________________________________________________________________________")
         print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
-        plt.close()
-        plt.close()
-
 
     if selection == '4':
         sys.exit()
