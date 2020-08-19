@@ -63,6 +63,7 @@ def stock_obv_visual(company, start_year, start_month, start_day, end_year, end_
 
     # Plotting the Close Price
     plt.figure(figsize = (20, 6))
+    plt.subplot(131)
     plt.plot(temp['Close'])
     plt.title('Price History Over Time')
     plt.ylabel('Share Price in USD')
@@ -70,8 +71,8 @@ def stock_obv_visual(company, start_year, start_month, start_day, end_year, end_
     plt.show(block = False)
 
     # Plotting the Volume
-    plt.figure(figsize = (20, 6))
     plt.plot(temp['Volume']/1000000)
+    plt.subplot(133)
     plt.title('Trade Volumes Over Time')
     plt.ylabel('Trade Volumes in Millions')
     plt.xlabel('Date')
