@@ -252,43 +252,17 @@ while True:
 
 
     if selection == '3':
-        print("Instructions: \nEnter in 1 to chart price and volume over time \nEnter in 2 to chart approximations of movement between two stocks")
-        next_selection = input("Enter option here: ")
-        if next_selection == '1':
-            print("________________________________________________________________________________")
-            enter_company = input("Enter a ticker here: ")
-            enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
-            enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
-            start_list = enter_start.split(", ")
-            end_list = enter_end.split(", ")
-            print("Here is the price over time and volume over time for %s: " %enter_company)
-            print(stock_obv_visual(enter_company,start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
-            print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
+        print("________________________________________________________________________________")
+        enter_company = input("Enter a ticker here: ")
+        enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
+        enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
+        start_list = enter_start.split(", ")
+        end_list = enter_end.split(", ")
+        print("Here is the price over time and volume over time for %s: " %enter_company)
+        print(stock_obv_visual(enter_company,start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] ))
+        print("________________________________________________________________________________")
+        print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
-        if next_selection == '2':
-            enter_company_1 = input("Enter a ticker here: ")
-            enter_company_2 = input("Enter another ticker here: ")
-            enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
-            enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
-            print("x-axis is company 1's price and y-axis is company 2's price, over given time interval")
-            start_list = enter_start.split(", ")
-            end_list = enter_end.split(", ")
-            comlist1, comlist2 = companies_lists(enter_company_1, enter_company_2, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] )
-            x = np.arange(-1000, 1000, 0.001)
-            y = data_discrete(comlist1,comlist2,25)(x) # Python distinguish lower and upper cases.
-            line = plt.plot(x, y, lw = 1)
-            #plt.annotate('f(x)', xy = (0, 1), xytext = (2, 1),
-            #arrowprops = dict(facecolor = 'black', shrink = 0.01))
-            plt.ylim(-10000, 10000)
-            plt.show()
-            print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
-
-        if next_selection != '1' and next_selection != '2':
-            print("Incorrect input entered")
-            print("________________________________________________________________________________")
-            print("Instructions: \nEnter in 1 to start analysis \nEnter in 2 to get a list of useful tickers you can enter \nEnter in 3 to get graphing capabilities\nEnter in 4 to exit the program")
 
     if selection == '4':
         sys.exit()
