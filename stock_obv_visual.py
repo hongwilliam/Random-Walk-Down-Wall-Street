@@ -68,7 +68,6 @@ def stock_obv_visual(company, start_year, start_month, start_day, end_year, end_
     plt.title('Price History Over Time')
     plt.ylabel('Share Price in USD')
     plt.xlabel('Date')
-    plt.show(block = False)
 
     # Plotting the Volume
     plt.subplot(133)
