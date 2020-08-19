@@ -271,14 +271,12 @@ while True:
             enter_company_2 = input("Enter another ticker here: ")
             enter_start = input("Enter start date of analysis as Year, Month, Day (ex: 2010, 8, 12): ")
             enter_end = input("Enter end date of analysis as Year, Month, Day (ex: 2020, 8, 12): ")
-            enter_n_degree = input("Enter the degree you want your polynomial as up to ~50: ")
+            print("x-axis is company 1's price and y-axis is company 2's price, over given time interval")
             start_list = enter_start.split(", ")
             end_list = enter_end.split(", ")
             comlist1, comlist2 = companies_lists(enter_company_1, enter_company_2, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] )
-            i = int(enter_n_degree)
-            print(f"This is the degree {i} polynomial:")
             x = np.arange(-1000, 1000, 0.001)
-            y = data_discrete(comlist1,comlist2,i)(x) # Python distinguish lower and upper cases.
+            y = data_discrete(comlist1,comlist2,50)(x) # Python distinguish lower and upper cases.
             line = plt.plot(x, y, lw = 1)
             #plt.annotate('f(x)', xy = (0, 1), xytext = (2, 1),
             #arrowprops = dict(facecolor = 'black', shrink = 0.01))
