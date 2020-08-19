@@ -276,7 +276,7 @@ while True:
             end_list = enter_end.split(", ")
             comlist1, comlist2 = companies_lists(enter_company_1, enter_company_2, start_list[0], start_list[1], start_list[2], end_list[0], end_list[1], end_list[2] )
             x = np.arange(-1000, 1000, 0.001)
-            y = data_discrete(comlist1,comlist2,50)(x) # Python distinguish lower and upper cases.
+            y = data_discrete(comlist1,comlist2,25)(x) # Python distinguish lower and upper cases.
             line = plt.plot(x, y, lw = 1)
             #plt.annotate('f(x)', xy = (0, 1), xytext = (2, 1),
             #arrowprops = dict(facecolor = 'black', shrink = 0.01))
