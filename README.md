@@ -17,3 +17,5 @@
 <br>(2) In addition, please install dependencies such as numpy, pandas, scipy.stats, and matplotlib.<br>
 <br>(3) while in this git directory type python random_walk.py to excecute the file</br>
 <br>(4) enter in instructions into the command line when prompted to begin analysis</br>
+
+<br>https://hongwilliam.github.io/Random-Walk-Down-Wall-Street/</br>
