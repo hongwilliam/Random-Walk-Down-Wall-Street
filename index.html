@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
   <div class="top-container">
     <div class="title-text">
       <img class="banner-img" src="images/wallstreet.jpeg" alt="banner-img">
@@ -21,6 +22,7 @@
   </div>
 
   <div class="middle-container">
+
     <div class="about">
       <h2>About</h2>
       <div class="about-row">
@@ -35,351 +37,103 @@
           stock markets? Our goal is to ascertain if there is some truth behind the “random walk” description of the stock market and if some level of predictability exists within it. This project provides analytical tools to the user so they can
           historically backtest data and determine for themselves if one can in fact “beat the market.”
         </p>
-        <h3>Our Tool</h3>
-        <p>
-          Our terminal based project is an interactive analytical tool for the financially inclined user. Once compiling the file random_walk.py in the terminal, the user starts with 3 main options in a continuously running command line: (1) use
-          analytical tools, (2) read a list of useful tickers, and (3) exit the program.
-          For the first main option, there are 4 additional prompts that the user can choose to pick an analytical tool.
-        </p>
-        <p>
-          <u>(1) Correlation coefficient:</u> This mathematical function analyzes movements of two data points and returns a number from -1 to 1 inclusive. The greater the absolute value of the correlation coefficient, the more strongly correlated
-          the two data points are. A positive correlation coefficient indicates a positive correlation, a negative correlation coefficient indicates a negative correlation. The user is prompted to enter in two companies (or other financial data
-          points), and a time interval to conduct analysis.
-        </p>
-        <center>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/J3pF2jkQ4vc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </center>
-        <p>
-          <u>(2) Volatility:</u> Volatility is a measure of risk. Greater volatility means greater dispersion of outcomes, i.e, standard deviation. This function prints out both the mean and standard deviation of the entered company (or other
-          financial data points) in the entered time interval.
-        </p>
-        <p>
-          <u>(3) Stochastic oscillator:</u> This is a trading tool used to indicate how overbought or oversold a stock is. The range of values is from 0 to 100, with higher values indicating stronger signals of a stock being overbought. The user is
-          prompted to enter in a company and the current date. The time interval considered for this analysis is the last 14 trading days. For rule of thumb, a stochastic oscillator value > 80 indicates overbought, while a value < 20 indicates
-            oversold. </p>
+      </div>
+    </div>
+
+    <div class="project">
+      <h2>Our Project</h2>
+      <div class="project-row">
+
+        <p>Our terminal based project is an interactive analytical tool for the financially inclined user. Once compiling the file random_walk.py in the terminal, the user starts with 3 main options in a continuously running command line: (1) use
+          analytical tools, (2) read a list of useful tickers, and (3) view charts. <a href="https://github.com/hongwilliam/Random-Walk-Down-Wall-Street">The Github link to our project is here.</a></p>
+
+        <h3>Part 1: Analytical Tools</h3>
+        <p>For the first main option, there are 5 additional prompts that the user can choose to pick an analytical tool which our program will compute for a desired company (or other financial data point) and desired time interval. </p>
+        <p>(1) <u>Correlation Coefficient:</u> <a href="https://www.investopedia.com/terms/p/pearsoncoefficient.asp">The Pearson correlation coefficient</a> analyzes movements of two data points and returns a number from -1 to 1 inclusive. The
+          greater the absolute value of the correlation coefficient, the more strongly correlated the two data points are. A positive correlation coefficient indicates a positive correlation, a negative correlation coefficient indicates a negative
+          correlation. In this function, the user is prompted to enter in two companies (or other financial data points) and a time interval to conduct analysis. The correlation coefficient can be used in a diversification strategy to hedge risk in a
+          portfolio by pairing assets that have negative correlation.</p>
+        <p>(2) <u>Volatility:</u> <a href="https://www.investopedia.com/terms/v/volatility.asp">Volatility</a> is a measure of risk. Greater volatility means greater dispersion of outcomes, i.e, standard deviation. According to consensus financial
+          thought, greater returns are only possible by assuming greater risk. Knowing how volatile a particular stock is during a given time interval and comparing it to its return over that time interval can help shed light on the relationship
+          between a stock's risk and return. Constructing a portfolio of assets with varying degrees of risk is a common strategy for diversification. This function prints out both the mean and standard deviation of the entered company (or other
+          financial data points) in the entered time interval.</p>
+        <p>(3) <u>Stochastic Oscillator:</u> <a href="https://www.investopedia.com/terms/s/stochasticoscillator.asp">The stochastic oscillator</a> is a trading tool used to indicate how overbought or oversold a stock is. The range of values is from 0
+          to 100, with higher values indicating stronger signals of a stock being overbought. For rule of thumb, a stochastic oscillator value > 80 indicates overbought, while a value < 20 indicates oversold. In this function, the user is prompted to
+            enter in a company and the current date.The time interval considered for this analysis is the last 14 trading days.</p>
+            <p>(4) <u>Average Daily Percent Change:</u> This simple statistic is self-explanatory and can be used to assess the volatility and momentum of a given company (or other financial data point) in the entered time interval. A high average
+              daily percent change can indicate a risky investment or can also indicate a strong trend if a short time interval is considered. In this function, the user is prompted to enter in a company (or other financial data point) and a time
+              interval on which to compute the average daily percent change. <a href="https://en.wikipedia.org/wiki/List_of_largest_daily_changes_in_the_S%26P_500_Index">Here's a list of the largest daily changes in the S%P 500 Index.</a> </p>
+            <p>(5) <u>Exponential Moving Average</u> <a href="https://www.investopedia.com/terms/e/ema.asp#:~:text=An%20exponential%20moving%20average%20(EMA)%20is%20a%20type%20of%20moving,the%20exponentially%20weighted%20moving%20average">The
+                exponential moving average</a> is a weighted average of a stock’s closing prices over a given time interval, with greater weight placed on more recent data points. As opposed to a simple moving average which places equal weight to all
+              data points, an exponential moving average is more sensitive to recent data points. Greater weight on newer data may better reflect a stock’s current trend, but it may also overstate the significance of recent movements. In this
+              function, the user is prompted to enter in a company (or other financial data point) and a time interval on which to compute the exponential moving average.</p>
             <center>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/_f4_pshMF3M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe class="video" width="672" height="378" src="https://www.youtube.com/embed/vqCvL7Eq6ts" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </center>
-            <p>
-              <u>(4) Average daily percent change:</u> This simple statistic is self-explanatory and can be used to assess the volatility and momentum of a given company (or other financial data point) in the entered time interval. A high average
-              daily percent change can indicate a risky investment or can also indicate a strong trend if a short time interval is considered.
-              For the second main option, there are additional prompts the user can choose to read a list of useful tickers to enter into the analytical functions. Since this project depends on data retrieved from Yahoo! Finance, specific tickers
-              must be entered for special financial data points such as market indexes, market sectors, commodities, and currency exchange rates. These tickers are not readily found on Yahoo Finance and are provided for the user to access should they
-              be curious about analyzing data outside of individual stocks. In this option, the user will be prompted to enter in what kind of data they wish to seek [1 - market indexes, 2 - US market sectors, 3 - commodities and currency exchange
-              rates].
-            </p>
-            <a href="https://github.com/hongwilliam/Random-Walk-Down-Wall-Street">The Github link to our project is here, where you can experiment with the code yourself and use the tool.</a>
-      </div>
-      <h2>The 11 Sectors</h2>
 
-      <div class="about-row">
+            <h3>Part 2: List of Tickers</h3>
+            <p>For the second main option, there are additional prompts the user can choose to read a list of useful tickers to enter into the analytical functions. Since this project depends on data retrieved from Yahoo! Finance, specific tickers
+              must be entered for special financial data points that are not individual stocks. These tickers are not readily found on Yahoo Finance and are provided for the user to access should they be curious about analyzing data outside of
+              individual stocks. In this option, the user will be prompted to enter in what kind of data they wish to seek, which include:</p>
+            <p>(1) <u>U.S. Market sectors:</u> <a href="https://www.investopedia.com/terms/m/marketindex.asp">Market indexes</a> represent a particular segment of the financial markets (ex: U.S. large cap companies are represented by the S&P 500,
+              U.S. small cap companies are represented by the Russell 2000, etc.). A list of important U.S. indexes and global indexes (such as the FTSE 100, Nikkei 225, etc.) are provided with their respective tickers that can be entered into the
+              analytical and charting capabilities of our project.</p>
+            <p>(2) <u>Market Indexes:</u> The U.S. stock market is generally split into <a href="https://www.investopedia.com/terms/s/sector-breakdown.asp">11 sectors</a> which include: Communication Services, Consumer Discretionary, Consumer
+              Staples, Energy, Financials, Health, Industrials, Materials, Real Estate, Technology, and Utilities. A list of Vanguard ETFs that represent each of these sectors is provided in this option. </p>
+            <p>(3) <u>Commodities:</u> <a href="https://www.investopedia.com/investing/commodities-trading-overview/">Commodities</a> are assets with notoriously volatile markets. Commodities markets can be catalysts for movements in stocks, which
+              makes trends in commodities trading important enough to consider. Some commodities, most notably gold, are often sought after by investors during periods of stock market volatility as a hedging strategy. A list of important commodities
+              ranging from metals, energy, and agriculture are provided to the user with their respective tickers that can be entered into our program.</p>
+            <p>(4) <u>Currency exchange rates and U.S. Treasuries:</u> Bond markets and the forex markets are also important financial data points to consider for analysis. <a
+                href="https://www.bloomberg.com/markets/rates-bonds/government-bonds/us">U.S. Treasury bonds</a> in particular are valued as safe havens for investors and generally, bond yields move inversely to stock prices. Movements in currency
+              exchange rates affect multinational companies and the forex market is more relevant than ever due to the increasing globalization of world economies. A small list of U.S. Treasury bonds with varying maturities and important currency
+              exchange rates are provided to the user as tickers.</p>
+            <center>
+              <iframe class="video" width="672" height="378" src="https://www.youtube.com/embed/9VLY8QgiISc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </center>
 
-
-        <div id="accordion">
-
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  1. Communication Services (VOX)
-                </button>
-              </h5>
-            </div>
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body">
-                <p>Notable Companies:</p>
-                <p>1. Alphabet (GOOGL)</p>
-                <p>2. Facebook (FB)</p>
-                <p>3. Verizon (VZ)</p>
-                <p>4. Netflix (NFLX)</p>
-                <p>5. AT&T (T)</p>
-                <p>6. Comcast (CMCSA)</p>
-                <p>7. Disney (DIS)</p>
-                <p>8. Charter Communications (CHTR)</p>
-                <p>9. T-Mobile US (TMUS)</p>
-                <p>10. Activision Blizzard (ATVI)</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  2. Consumer Discretionary (VCR)
-                </button>
-              </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-              <div class="card-body">
-                <p>Notable Companies:</p>
-                <p>1. Amazon (AMZN)</p>
-                <p>2. Home Depot (HD)</p>
-                <p>3. McDonald’s (MCD)</p>
-                <p>4. Tesla (TSLA)</p>
-                <p>5. NIKE (NKE)</p>
-                <p>6. Lowe’s (LOW)</p>
-                <p>7. Starbucks (SBUX)</p>
-                <p>8. Booking Holdings (BKNG)</p>
-                <p>9. TJX Companies (TJX)</p>
-                <p>10. Target (TGT)</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="card">
-          <div class="card-header" id="headingThree">
-            <h5 class="mb-0">
-              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                3. Consumer Staples (VDC)
-              </button>
-            </h5>
-          </div>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-            <div class="card-body">
-              <p>Notable Companies:</p>
-              <p>1. Procter & Gamble (PG)</p>
-              <p>2. PepsiCo (PEP)</p>
-              <p>3. Coca-Cola (KO)</p>
-              <p>4. Walmart (WMT)</p>
-              <p>5. Philip Morris International (PM)</p>
-              <p>6. Costco (COST)</p>
-              <p>7. Mondelez International (MDLZ)</p>
-              <p>8. Altria Group (MO)</p>
-              <p>9. Colgate-Palmolive (CL)</p>
-              <p>10. Kimberly-Clark (KMB)</p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="card">
-          <div class="card-header" id="headingFour">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                4. Energy (VDE)
-              </button>
-            </h5>
-          </div>
-          <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordion">
-            <div class="card-body">
-              <p>Notable Companies:</p>
-              <p>1. Exxon Mobil (XOM)</p>
-              <p>2. Chevron (CVX)</p>
-              <p>3. ConocoPhillips (COP)</p>
-              <p>4. Phillips 66 (PSX)</p>
-              <p>5. EOG Resources (EOG)</p>
-              <p>6. Kinder Morgan (KMI)</p>
-              <p>7. Schlumberger (SLB)</p>
-              <p>8. Marathon Petroleum (MPC)</p>
-              <p>9. Valero Energy (VLO)</p>
-              <p>10. Williams Companies (WMB)</p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="card">
-          <div class="card-header" id="headingFive">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                5. Financials (VFH)
-              </button>
-            </h5>
-          </div>
-          <div id="collapseFive" class="collapse show" aria-labelledby="headingFive" data-parent="#accordion">
-            <div class="card-body">
-              <p>Notable Companies:</p>
-              <p>1. JPMorgan Chase (JPM)</p>
-              <p>2. Berkshire Hathaway (BRK.A)</p>
-              <p>3. Bank of America (BAC)</p>
-              <p>4. Citigroup (C)</p>
-              <p>5. Wells Fargo (WFC)</p>
-              <p>6. BlackRock (BLK)</p>
-              <p>7. S&P Global (SPGI)</p>
-              <p>8. American Express (AXP)</p>
-              <p>9. Goldman Sachs (GS)</p>
-              <p>10. CME Group (CME)</p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="card">
-          <div class="card-header" id="headingSix">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
-                6. Health (VHT)
-              </button>
-            </h5>
-          </div>
-          <div id="collapseSix" class="collapse show" aria-labelledby="headingSix" data-parent="#accordion">
-            <div class="card-body">
-              <p>Notable Companies:</p>
-              <p>1. Johnson & Johnson (JNJ)</p>
-              <p>2. UnitedHealth (UNH)</p>
-              <p>3. Merck (MRK)</p>
-              <p>4. Pfizer (PFE)</p>
-              <p>5. AbbVie (ABBV)</p>
-              <p>6. Abbott Laboratories (ABT)</p>
-              <p>7. Thermo Fisher Scientific (TMO)</p>
-              <p>8. Eli Lilly and Co. (LLY)</p>
-              <p>9. Amgen (AMGN)</p>
-              <p>10. Bristol-Myers Squibb (BMY)</p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="card">
-          <div class="card-header" id="headingSeven">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
-                7. Industrials (VIS)
-              </button>
-            </h5>
-          </div>
-          <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven" data-parent="#accordion">
-            <div class="card-body">
-              <p>Notable Companies:</p>
-              <p>1. Union Pacific (UNP)</p>
-              <p>2. Honeywell (HON)</p>
-              <p>3. Boeing (BA)</p>
-              <p>4. Raytheon Technologies (RTX)</p>
-              <p>5. Lockheed Martin (LMT)</p>
-              <p>6. 3M (MMM)</p>
-              <p>7. United Parcel Service (UPS)</p>
-              <p>8. Caterpillar (CAT)</p>
-              <p>9. General Electric (GE)</p>
-              <p>10. Illinois Tool Works (ITW)</p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="card">
-          <div class="card-header" id="headingEight">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
-                8. Materials (VAW)
-              </button>
-            </h5>
-          </div>
-          <div id="collapseEight" class="collapse show" aria-labelledby="headingEight" data-parent="#accordion">
-            <div class="card-body">
-              <p>Notable Companies:</p>
-              <p>1. Linde PLC (LIN)</p>
-              <p>2. Air Products and Chemicals (APD)</p>
-              <p>3. Ecolab (ECL)</p>
-              <p>4. Newmont (NEM)</p>
-              <p>5. Sherwin-Williams (SHW)</p>
-              <p>6. DuPont de Nemours (DD)</p>
-              <p>7. Dow Inc. (DOW)</p>
-              <p>8. PPG Industries (PPG)</p>
-              <p>9. Ball Corp. (BLL)</p>
-              <p>10. Corteva (CTVA)</p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="card">
-          <div class="card-header" id="headingNine ">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
-                9. Real Estate (VNQ)
-              </button>
-            </h5>
-          </div>
-          <div id="collapseNine" class="collapse show" aria-labelledby="headingNine" data-parent="#accordion">
-            <div class="card-body">
-              <p>Notable Companies:</p>
-              <p>1. Vanguard Real Estate II Index Fund (VRTPX)</p>
-              <p>2. American Tower (AMT)</p>
-              <p>3. Crown Castle International (CCI)</p>
-              <p>4. Prologis (PLD)</p>
-              <p>5. Equinix (EQIX)</p>
-              <p>6. Digital Realty Trust (DLR)</p>
-              <p>7. SBA Communications (SBAC)</p>
-              <p>8. Public Storage (PSA) </p>
-              <p>9. Equity Residential (EQR)</p>
-              <p>10. AvalonBay Communities (AVB)</p>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="card">
-          <div class="card-header" id="headingTen">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
-                10. Technology (VGT)
-              </button>
-            </h5>
-          </div>
-          <div id="collapseTen" class="collapse show" aria-labelledby="headingTen" data-parent="#accordion">
-            <div class="card-body">
-              <p>Notable Companies:</p>
-              <p>1. Apple (AAPL)</p>
-              <p>2. Microsoft (MSFT)</p>
-              <p>3. Visa (V)</p>
-              <p>4. Mastercard (MA)</p>
-              <p>5. Intel (INTC)</p>
-              <p>6. NVIDIA (NVDA)</p>
-              <p>7. Adobe (ADBE)</p>
-              <p>8. Cisco Systems (CSCO)</p>
-              <p>9. PayPal Holdings (PYPL)</p>
-              <p>10. Salesforce.com (CRM)</p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="card">
-          <div class="card-header" id="headingEleven">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
-                11. Utilities (VPU)
-              </button>
-            </h5>
-          </div>
-          <div id="collapseEleven" class="collapse show" aria-labelledby="headingEleven" data-parent="#accordion">
-            <div class="card-body">
-              <p>Notable Companies:</p>
-              <p>1. NextEra Energy (NEE)</p>
-              <p>2. Dominion Energy (D)</p>
-              <p>3. Duke Energy (DUK)</p>
-              <p>4. Southern Co. (SO)</p>
-              <p>5. American Electric Power (AEP)</p>
-              <p>6. Exelon (EXC)</p>
-              <p>7. Sempra Energy (SRE)</p>
-              <p>8. Xcel Energy (XEL)</p>
-              <p>9. WEC Energy Group (WEC)</p>
-              <p>10. Eversource Energy (ES)</p>
-            </div>
-          </div>
-        </div>
-
-
+            <h3>Part 3: Graphing Tools</h3>
+            <p>For the third main option, the user can view two charts for an entered company and time interval: (1) price over time and (2) volume over time. These are basic tools that can be used in conjunction with the analytical functions given
+              which can ultimately help the user visualize trends over a certain time interval.</p>
+            <center>
+              <iframe class="video" width="672" height="378" src="https://www.youtube.com/embed/5rvasss6t-M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </center>
 
       </div>
-      <hr>
-      <p><u>Members:</u> Wiliam Hong, Daniel Han, Aaron Chen, Farhan Azad</p>
-      <hr>
+    </div>
 
+    <hr>
 
-
-      <div class="bottom-container">
-        <a class="footer-link" href="https://github.com/hongwilliam/Random-Walk-Down-Wall-Street">Github</a>
-        <p class="copyright">© 2020</p>
+    <div class="members">
+      <h2>Team Members</h2>
+      <div class="members-row">
+        <p><u>William Hong</u> is an applied math and finance student at Fordham University. William is particularly interested in data science and quantifying statistical trends, and naturally his greatest passions are in the financial markets and sports analytics. </p> <a href="https://github.com/hongwilliam"><img class="icon-img" src="images/github.png" alt="Github"></a> <a href="https://www.linkedin.com/in/williamhong00/"><img class="icon-img" src="images/linkedin.png" alt="Linkedin"></a>
+        <br>
+        <br>
+        <p><u>Daniel Han</u> is an applied mathematics student at Vanderbilt University, also minoring in scientific computing. He is pursuing a career in data science, with a regard for neuroscience. Daniel is interested in finding meaningful statistics and quantifiable human behavior patterns.</p>
+        <a href="https://github.com/userclaim"><img class="icon-img" src="images/github.png" alt="Github"></a> <a href="https://www.linkedin.com/in/seunghoonhan/"><img class="icon-img" src="images/linkedin.png" alt="Linkedin"></a>
+        <br>
+        <br>
+        <p><u>Aaron Chen</u> is currently a rising junior at NYU and has experience in web development and web design. He strives to learn more about machine learning, software engineering and data science. A few of his interests include reading up about geopolitical issues and learning about the financial markets.</p>
+        <a href="https://github.com/AaronBinChen"><img class="icon-img" src="images/github.png" alt="Github"></a> <a href=" https://www.linkedin.com/in/aaron-bin-chen/"><img class="icon-img" src="images/linkedin.png" alt="Linkedin"></a>
+        <br>
+        <br>
+        <p><u>Farhan Azad</u> is a math student at Fordham University pursuing a double concentration in applied and pure mathematics. Coding and mathematical research are two of Farhan's greatest interests.</p>
+        <a href="https://github.com/Fazad826"><img class="icon-img" src="images/github.png" alt="Github"></a> <a href="https://www.linkedin.com/in/farhan-azad-79b670174/"><img class="icon-img" src="images/linkedin.png" alt="Linkedin"></a>
       </div>
+    </div>
 
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <hr>
+
+  </div>
+
+  <div class="bottom-container">
+    <a class="footer-link" href="https://github.com/hongwilliam/Random-Walk-Down-Wall-Street">Github</a>
+    <p class="copyright">© 2020</p>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 
 </html>
